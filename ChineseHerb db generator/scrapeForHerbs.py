@@ -22,17 +22,17 @@ driver = webdriver.Chrome(chrome_options=chrome_options)
 
 with open('herbs.csv', 'w', newline='') as csvfile:
 	writer = csv.writer(csvfile)
-	writer.writerow(['engName','chiName','effect','taste','quality','shape'])
+	writer.writerow(['herb_id','engName','chiName','effect','taste','quality','shape'])
 
 	base_url = 'http://libproject.hkbu.edu.hk/was40/detail?channelid=47953&lang=cht&searchword=pid=B00'
 	for i in range(1,422):
 		if(i<10):
-			url = base_url + "00" + str(i)
+			herb_id = "00" + str(i)
 		elif(i<100):
-			url = base_url + "0" + str(i)
+			herb_id = "0" + str(i)
 		else:
-			url = base_url + str(i)
-		driver.get(url)
+			herb_id = str(i)
+		driver.get(base_url+herb_id)
 
 		soup=BeautifulSoup(driver.page_source, 'lxml')
 		for tr in soup.find_all('tr'):
@@ -58,9 +58,15 @@ with open('herbs.csv', 'w', newline='') as csvfile:
 				elif(header=="功效"):
 					td1 = tr.find_all('td')[1]
 					effect = str(td1.contents[-1]).strip()
-
-		herb_record = engName +","+ chiName +","+ effect +","+ taste +","+ quality +","+ shape	
-		print(str(i)+ " - "+herb_record)
-		writer.writerow([engName,chiName,effect,taste,quality,shape])
+		print_herb_id = '0'+ herb_id
+		herb_record = print_herb_id +","+ engName +","+ chiName +","+ effect +","+ taste +","+ quality +","+ shape	
+		print(herb_record)
+		writer.writerow([print_herb_id,
+			engName.encode("utf8").decode("cp950", "ignore"),
+			chiName.encode("utf8").decode("cp950", "ignore"),
+			effect.encode("utf8").decode("cp950", "ignore"),
+			taste.encode("utf8").decode("cp950", "ignore"),
+			quality.encode("utf8").decode("cp950", "ignore"),
+			shape.encode("utf8").decode("cp950", "ignore")])
 
 driver.quit()
