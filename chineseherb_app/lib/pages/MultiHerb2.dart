@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:dio/dio.dart';
+import 'package:photo_view/photo_view.dart';
 
 // import 'package:image_picker_saver/image_picker_saver.dart';
 
@@ -56,7 +57,11 @@ class _MultiHerb2State extends State<MultiHerb2> {
         //   title: new Text("多種中藥辨識"),
         //   backgroundColor: Colors.green[900],
         // ),
-        body: new Center(child: new Image.memory(finalImageBytes)),
+        body: new Center(
+            child: PhotoView(
+          imageProvider: MemoryImage(finalImageBytes),
+          backgroundDecoration: BoxDecoration(color: Colors.white),
+        )),
         floatingActionButton: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           mainAxisAlignment: MainAxisAlignment.end,
