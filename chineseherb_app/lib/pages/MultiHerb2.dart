@@ -31,22 +31,26 @@ class _MultiHerb2State extends State<MultiHerb2> {
             children: <Widget>[
               FloatingActionButton(
                 child: Icon(
-                  Icons.camera,
+                  Icons.camera_alt,
                   color: Colors.white,
                 ),
                 onPressed: () {},
               ),
-              FloatingActionButton(
-                child: Icon(
-                  Icons.folder_open,
-                  color: Colors.white,
+              Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: FloatingActionButton(
+                  child: Icon(
+                    Icons.folder_open,
+                    color: Colors.white,
+                  ),
+                  onPressed: () {
+                    print("Before finalImageBytes: " +
+                        finalImageBytes.toString());
+                    _selectImageAndDectect(context);
+                    print(
+                        "After finalImageBytes: " + finalImageBytes.toString());
+                  },
                 ),
-                onPressed: () {
-                  print(
-                      "Before finalImageBytes: " + finalImageBytes.toString());
-                  _selectImageAndDectect(context);
-                  print("After finalImageBytes: " + finalImageBytes.toString());
-                },
               ),
             ],
           ));
@@ -68,21 +72,25 @@ class _MultiHerb2State extends State<MultiHerb2> {
           children: <Widget>[
             FloatingActionButton(
               child: Icon(
-                Icons.camera,
+                Icons.camera_alt,
                 color: Colors.white,
               ),
               onPressed: () {},
             ),
-            FloatingActionButton(
-              child: Icon(
-                Icons.folder_open,
-                color: Colors.white,
+            Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: FloatingActionButton(
+                child: Icon(
+                  Icons.folder_open,
+                  color: Colors.white,
+                ),
+                onPressed: () {
+                  print(
+                      "Before finalImageBytes: " + finalImageBytes.toString());
+                  _selectImageAndDectect(context);
+                  print("After finalImageBytes: " + finalImageBytes.toString());
+                },
               ),
-              onPressed: () {
-                print("Before finalImageBytes: " + finalImageBytes.toString());
-                _selectImageAndDectect(context);
-                print("After finalImageBytes: " + finalImageBytes.toString());
-              },
             ),
           ],
         ));
@@ -90,7 +98,7 @@ class _MultiHerb2State extends State<MultiHerb2> {
 
   _selectImageAndDectect(BuildContext context) async {
     Dio dio = new Dio();
-    dio.options.baseUrl = "http://gpu31.cse.cuhk.edu.hk:5000";
+    dio.options.baseUrl = "http://gpu38.cse.cuhk.edu.hk:5000";
 
     File image;
     image = await ImagePicker.pickImage(source: ImageSource.gallery);
@@ -120,6 +128,9 @@ class _MultiHerb2State extends State<MultiHerb2> {
 
     String returnImage = resJson['image'];
     Uint8List _base64 = base64.decode(returnImage);
+
+    print(resJson['predictions']);
+
     // var utf8Encoded = utf8.encode(returnImage);
     // var base64Encoded = base64.encode(utf8Encoded);
     // var finalImg = base64.decode(base64Encoded);

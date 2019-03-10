@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import './SingleHerb.dart';
-import './MultiHerb.dart';
 import './MultiHerb2.dart';
 import './Search.dart';
 
@@ -78,6 +77,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+        resizeToAvoidBottomPadding: false,
         appBar: new AppBar(
           leading: IconButton(
               icon: Icon(Icons.menu),
