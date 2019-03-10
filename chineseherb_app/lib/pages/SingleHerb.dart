@@ -62,11 +62,40 @@ class _SingleHerbState extends State<SingleHerb> {
         //   title: new Text("多種中藥辨識"),
         //   backgroundColor: Colors.green[900],
         // ),
-        body: new Center(
-            child: PhotoView(
-          imageProvider: MemoryImage(finalImageBytes),
-          backgroundDecoration: BoxDecoration(color: Colors.white),
-        )),
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Expanded(
+                child: ListView(
+              children: <Widget>[
+                Container(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Text(
+                    currentHerb,
+                    style: const TextStyle(fontSize: 18.0),
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.symmetric(
+                      vertical: 0.0, horizontal: 20.0),
+                  height: 200.0,
+                  child: ClipRect(
+                    child: PhotoView(
+                      imageProvider: MemoryImage(finalImageBytes),
+                      maxScale: PhotoViewComputedScale.covered * 2.0,
+                      minScale: PhotoViewComputedScale.contained * 0.8,
+                      initialScale: PhotoViewComputedScale.covered,
+                    ),
+                  ),
+                )
+              ],
+            ))
+          ],
+        ),
+        // body: PhotoView(
+        //   imageProvider: MemoryImage(finalImageBytes),
+        //   backgroundDecoration: BoxDecoration(color: Colors.white),
+        // ),
         floatingActionButton: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           mainAxisAlignment: MainAxisAlignment.end,
@@ -80,16 +109,20 @@ class _SingleHerbState extends State<SingleHerb> {
                 _detectImagebyCamera(context);
               },
             ),
-            FloatingActionButton(
-              child: Icon(
-                Icons.folder_open,
-                color: Colors.white,
-              ),
-              onPressed: () {
-                print("Before finalImageBytes: " + finalImageBytes.toString());
+            Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: FloatingActionButton(
+                child: Icon(
+                  Icons.folder_open,
+                  color: Colors.white,
+                ),
+                onPressed: () {
+                  print(
+                      "Before finalImageBytes: " + finalImageBytes.toString());
 
-                print("After finalImageBytes: " + finalImageBytes.toString());
-              },
+                  print("After finalImageBytes: " + finalImageBytes.toString());
+                },
+              ),
             ),
           ],
         ));
@@ -112,10 +145,21 @@ class _SingleHerbState extends State<SingleHerb> {
         numResults: 5, // defaults to 5
         threshold: 0.1 // defaults to 0.1
         );
+
     print(recognitions.toString());
+    var first;
+    for (var reg in recognitions) {
+      print(reg.toString());
+      first = reg;
+      break;
+    }
+
+    print("Label: " + first["label"]);
+    print("confidence: " + first["confidence"].toString());
 
     setState(() {
       finalImageBytes = imageBytes;
+      currentHerb = first["label"];
       return finalImageBytes;
     });
   }
