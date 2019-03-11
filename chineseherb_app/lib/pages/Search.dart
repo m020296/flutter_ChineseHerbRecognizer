@@ -3,6 +3,7 @@ import 'package:sqflite/sqflite.dart';
 
 import 'package:chineseherb_app/databaseHelper.dart';
 import 'package:chineseherb_app/models/herb.dart';
+import 'package:chineseherb_app/pages/DetailPage.dart';
 
 class Search extends StatefulWidget {
   @override
@@ -78,6 +79,12 @@ class SearchListState extends State<Search> {
             subtitle: Text(this.herbList[position].engName),
             onTap: () {
               debugPrint("ListTile Tapped");
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => DetailPage(herb: this.herbList[position]),
+                ),
+              );
             },
           ),
         );
