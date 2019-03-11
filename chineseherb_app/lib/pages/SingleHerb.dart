@@ -1,9 +1,12 @@
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:chineseherb_app/databaseHelper.dart';
+import 'package:chineseherb_app/models/herb.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:photo_view/photo_view.dart';
+import 'package:sqflite/sqflite.dart';
 import 'package:tflite/tflite.dart';
 
 class SingleHerb extends StatefulWidget {
@@ -12,8 +15,11 @@ class SingleHerb extends StatefulWidget {
 }
 
 class _SingleHerbState extends State<SingleHerb> {
-  @override
+  DatabaseHelper databaseHelper = DatabaseHelper();
+  List<Herb> herbList;
   Uint8List finalImageBytes;
+  int count = 0;
+  @override
   String currentHerb = "Please take photo";
   Widget build(BuildContext context) {
     if (finalImageBytes == null) {
@@ -157,10 +163,24 @@ class _SingleHerbState extends State<SingleHerb> {
     print("Label: " + first["label"]);
     print("confidence: " + first["confidence"].toString());
 
-    setState(() {
-      finalImageBytes = imageBytes;
-      currentHerb = first["label"];
-      return finalImageBytes;
+    final Future<Database> dbFuture = databaseHelper.database;
+    dbFuture.then((database) {
+      Future<List<Herb>> herbListFuture =
+          databaseHelper.getHerbListbyID(first["label"]);
+      herbListFuture.then((herbList) {
+        setState(() {
+          this.herbList = herbList;
+          this.count = herbList.length;
+          finalImageBytes = imageBytes;
+          currentHerb = this.herbList[0].chName;
+        });
+      });
     });
+
+    // setState(() {
+    //   finalImageBytes = imageBytes;
+    //   currentHerb = this.herbList[0].chName;
+    //   return finalImageBytes;
+    // });
   }
 }
