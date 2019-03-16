@@ -37,7 +37,7 @@ class _MultiHerb2State extends State<MultiHerb2> {
                 onPressed: () {},
               ),
               Padding(
-                padding: const EdgeInsets.all(5.0),
+                padding: const EdgeInsets.symmetric(vertical: 5.0),
                 child: FloatingActionButton(
                   child: Icon(
                     Icons.folder_open,
@@ -78,7 +78,7 @@ class _MultiHerb2State extends State<MultiHerb2> {
               onPressed: () {},
             ),
             Padding(
-              padding: const EdgeInsets.all(5.0),
+              padding: const EdgeInsets.symmetric(vertical: 5.0),
               child: FloatingActionButton(
                 child: Icon(
                   Icons.folder_open,

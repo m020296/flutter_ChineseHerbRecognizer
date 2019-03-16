@@ -44,7 +44,6 @@ class SearchListState extends State<Search> {
           decoration: InputDecoration(
               labelText: "Search",
               hintText: "Search",
-              prefixIcon: Icon(Icons.search),
               border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(25.0))),
               suffixIcon: IconButton(
@@ -77,14 +76,15 @@ class SearchListState extends State<Search> {
               style: titleStyle,
             ),
             subtitle: Text(this.herbList[position].engName),
-            trailing: Icon(
-                Icons.keyboard_arrow_right, color: Colors.grey, size: 30.0),
+            trailing: Icon(Icons.keyboard_arrow_right,
+                color: Colors.grey, size: 30.0),
             onTap: () {
               debugPrint("ListTile Tapped");
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => DetailPage(herb: this.herbList[position]),
+                  builder: (context) =>
+                      DetailPage(herb: this.herbList[position]),
                 ),
               );
             },

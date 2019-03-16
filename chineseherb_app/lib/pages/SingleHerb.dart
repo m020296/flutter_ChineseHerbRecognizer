@@ -43,15 +43,15 @@ class _SingleHerbState extends State<SingleHerb> {
               FloatingActionButton(
                 heroTag: "cam",
                 child: Icon(
-                  Icons.camera,
+                  Icons.camera_alt,
                   color: Colors.white,
                 ),
                 onPressed: () {
-                  _detectImagebyCamera(context);
+                  _detectImagebyCamera(context, 1);
                 },
               ),
               Padding(
-                padding: const EdgeInsets.all(5.0),
+                padding: const EdgeInsets.symmetric(vertical: 5.0),
                 child: FloatingActionButton(
                   heroTag: "file",
                   child: Icon(
@@ -61,7 +61,7 @@ class _SingleHerbState extends State<SingleHerb> {
                   onPressed: () {
                     print("Before finalImageBytes: " +
                         finalImageBytes.toString());
-
+                    _detectImagebyCamera(context, 2);
                     print(
                         "After finalImageBytes: " + finalImageBytes.toString());
                   },
@@ -69,7 +69,7 @@ class _SingleHerbState extends State<SingleHerb> {
               ),
             ],
           ));
-    }else if(confident == false){
+    } else if (confident == false) {
       return new Scaffold(
           backgroundColor: Colors.grey[300],
           // appBar: new AppBar(
@@ -78,8 +78,7 @@ class _SingleHerbState extends State<SingleHerb> {
           // ),
           body: Container(
             padding: const EdgeInsets.only(top: 10.0),
-            child:
-            Card(
+            child: Card(
               color: Colors.white,
               elevation: 2.0,
               child: ListTile(
@@ -104,11 +103,11 @@ class _SingleHerbState extends State<SingleHerb> {
                   color: Colors.white,
                 ),
                 onPressed: () {
-                  _detectImagebyCamera(context);
+                  _detectImagebyCamera(context, 1);
                 },
               ),
               Padding(
-                padding: const EdgeInsets.all(5.0),
+                padding: const EdgeInsets.symmetric(vertical: 5.0),
                 child: FloatingActionButton(
                   heroTag: "file",
                   child: Icon(
@@ -118,7 +117,7 @@ class _SingleHerbState extends State<SingleHerb> {
                   onPressed: () {
                     print("Before finalImageBytes: " +
                         finalImageBytes.toString());
-
+                    _detectImagebyCamera(context, 2);
                     print(
                         "After finalImageBytes: " + finalImageBytes.toString());
                   },
@@ -156,7 +155,7 @@ class _SingleHerbState extends State<SingleHerb> {
                 Container(
                   padding: const EdgeInsets.all(5),
                   child: Text(
-                    "電腦分析上圖 "+ (confidence*100).toStringAsFixed(0) + "% 為",
+                    "電腦分析上圖 " + (confidence * 100).toStringAsFixed(0) + "% 為",
                     style: const TextStyle(fontSize: 18.0),
                   ),
                 ),
@@ -170,8 +169,8 @@ class _SingleHerbState extends State<SingleHerb> {
                       style: Theme.of(context).textTheme.subhead,
                     ),
                     subtitle: Text(targetHerb.engName),
-                    trailing: Icon(
-                        Icons.keyboard_arrow_right, color: Colors.grey, size: 30.0),
+                    trailing: Icon(Icons.keyboard_arrow_right,
+                        color: Colors.grey, size: 30.0),
                     onTap: () {
                       debugPrint("card Tapped");
                       Navigator.push(
@@ -202,11 +201,11 @@ class _SingleHerbState extends State<SingleHerb> {
                 color: Colors.white,
               ),
               onPressed: () {
-                _detectImagebyCamera(context);
+                _detectImagebyCamera(context, 1);
               },
             ),
             Padding(
-              padding: const EdgeInsets.all(5.0),
+              padding: const EdgeInsets.symmetric(vertical: 5.0),
               child: FloatingActionButton(
                 heroTag: "file",
                 child: Icon(
@@ -216,7 +215,7 @@ class _SingleHerbState extends State<SingleHerb> {
                 onPressed: () {
                   print(
                       "Before finalImageBytes: " + finalImageBytes.toString());
-
+                  _detectImagebyCamera(context, 2);
                   print("After finalImageBytes: " + finalImageBytes.toString());
                 },
               ),
@@ -225,9 +224,13 @@ class _SingleHerbState extends State<SingleHerb> {
         ));
   }
 
-  _detectImagebyCamera(BuildContext context) async {
+  _detectImagebyCamera(BuildContext context, int source) async {
     File image;
-    image = await ImagePicker.pickImage(source: ImageSource.camera);
+    if (source == 1) {
+      image = await ImagePicker.pickImage(source: ImageSource.camera);
+    } else if (source == 2) {
+      image = await ImagePicker.pickImage(source: ImageSource.gallery);
+    }
 
     List<int> imageBytes = image.readAsBytesSync();
 
@@ -253,11 +256,11 @@ class _SingleHerbState extends State<SingleHerb> {
 
     print("Label: " + first["label"]);
     print("confidence: " + first["confidence"].toString());
-    if(first["confidence"] > threshold) {
+    if (first["confidence"] > threshold) {
       final Future<Database> dbFuture = databaseHelper.database;
       dbFuture.then((database) {
         Future<List<Herb>> herbListFuture =
-        databaseHelper.getHerbListbyID(first["label"]);
+            databaseHelper.getHerbListbyID(first["label"]);
         herbListFuture.then((herbList) {
           setState(() {
             confident = true;
@@ -270,7 +273,7 @@ class _SingleHerbState extends State<SingleHerb> {
           });
         });
       });
-    }else{
+    } else {
       setState(() {
         confident = false;
         finalImageBytes = imageBytes;
