@@ -12,7 +12,7 @@ class DetailPage extends StatelessWidget {
         title: new Text(herb.chName),
         backgroundColor: Colors.blueGrey,
       ),
-      body: new Container(
+      body: new SingleChildScrollView(
         padding: const EdgeInsets.all(32.0),
         child: new Row(
           children: [
@@ -103,7 +103,7 @@ class DetailPage extends StatelessWidget {
                       herb.qulity,
                     ),
                   ),
-                ],
+                ] ,
               ),
             ),
           ],

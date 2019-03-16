@@ -77,6 +77,8 @@ class SearchListState extends State<Search> {
               style: titleStyle,
             ),
             subtitle: Text(this.herbList[position].engName),
+            trailing: Icon(
+                Icons.keyboard_arrow_right, color: Colors.grey, size: 30.0),
             onTap: () {
               debugPrint("ListTile Tapped");
               Navigator.push(

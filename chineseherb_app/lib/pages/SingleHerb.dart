@@ -9,6 +9,8 @@ import 'package:photo_view/photo_view.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:tflite/tflite.dart';
 
+import 'package:chineseherb_app/pages/DetailPage.dart';
+
 class SingleHerb extends StatefulWidget {
   @override
   _SingleHerbState createState() => new _SingleHerbState();
@@ -21,6 +23,10 @@ class _SingleHerbState extends State<SingleHerb> {
   int count = 0;
   @override
   String currentHerb = "Please take photo";
+  bool confident = false;
+  double confidence;
+  double threshold = 0.5;
+  Herb targetHerb;
   Widget build(BuildContext context) {
     if (finalImageBytes == null) {
       return new Scaffold(
@@ -35,6 +41,7 @@ class _SingleHerbState extends State<SingleHerb> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
               FloatingActionButton(
+                heroTag: "cam",
                 child: Icon(
                   Icons.camera,
                   color: Colors.white,
@@ -46,6 +53,64 @@ class _SingleHerbState extends State<SingleHerb> {
               Padding(
                 padding: const EdgeInsets.all(5.0),
                 child: FloatingActionButton(
+                  heroTag: "file",
+                  child: Icon(
+                    Icons.folder_open,
+                    color: Colors.white,
+                  ),
+                  onPressed: () {
+                    print("Before finalImageBytes: " +
+                        finalImageBytes.toString());
+
+                    print(
+                        "After finalImageBytes: " + finalImageBytes.toString());
+                  },
+                ),
+              ),
+            ],
+          ));
+    }else if(confident == false){
+      return new Scaffold(
+          backgroundColor: Colors.grey[300],
+          // appBar: new AppBar(
+          //   title: new Text("多種中藥辨識"),
+          //   backgroundColor: Colors.green[900],
+          // ),
+          body: Container(
+            padding: const EdgeInsets.only(top: 10.0),
+            child:
+            Card(
+              color: Colors.white,
+              elevation: 2.0,
+              child: ListTile(
+                title: Text(
+                  "未能辨識",
+                  style: Theme.of(context).textTheme.subhead,
+                ),
+                subtitle: Text(
+                  "\n請再嘗試!\n\n提示:\n 1. 請用把中藥放左純色背景上\n 2. 請在光亮環境下拍攝\n 3. 請嘗試不同的角度 \n ",
+                ),
+              ),
+            ),
+          ),
+          floatingActionButton: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: <Widget>[
+              FloatingActionButton(
+                heroTag: "cam",
+                child: Icon(
+                  Icons.camera,
+                  color: Colors.white,
+                ),
+                onPressed: () {
+                  _detectImagebyCamera(context);
+                },
+              ),
+              Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: FloatingActionButton(
+                  heroTag: "file",
                   child: Icon(
                     Icons.folder_open,
                     color: Colors.white,
@@ -63,7 +128,7 @@ class _SingleHerbState extends State<SingleHerb> {
           ));
     }
     return new Scaffold(
-        backgroundColor: Colors.grey,
+        backgroundColor: Colors.grey[300],
         // appBar: new AppBar(
         //   title: new Text("多種中藥辨識"),
         //   backgroundColor: Colors.green[900],
@@ -75,27 +140,51 @@ class _SingleHerbState extends State<SingleHerb> {
                 child: ListView(
               children: <Widget>[
                 Container(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Text(
-                    currentHerb,
-                    style: const TextStyle(fontSize: 18.0),
-                  ),
-                ),
-                Container(
+                  color: Colors.white,
                   margin: const EdgeInsets.symmetric(
-                      vertical: 0.0, horizontal: 20.0),
+                      vertical: 20.0, horizontal: 20.0),
                   height: 200.0,
                   child: ClipRect(
                     child: PhotoView(
                       imageProvider: MemoryImage(finalImageBytes),
                       maxScale: PhotoViewComputedScale.covered * 2.0,
-                      minScale: PhotoViewComputedScale.contained * 0.8,
+                      minScale: PhotoViewComputedScale.covered,
                       initialScale: PhotoViewComputedScale.covered,
                     ),
                   ),
-                )
+                ),
+                Container(
+                  padding: const EdgeInsets.all(5),
+                  child: Text(
+                    "電腦分析上圖 "+ (confidence*100).toStringAsFixed(0) + "% 為",
+                    style: const TextStyle(fontSize: 18.0),
+                  ),
+                ),
+                Card(
+                  color: Colors.white,
+                  elevation: 2.0,
+                  child: ListTile(
+                    leading: CircleAvatar(backgroundColor: Colors.blueGrey),
+                    title: Text(
+                      targetHerb.chName,
+                      style: Theme.of(context).textTheme.subhead,
+                    ),
+                    subtitle: Text(targetHerb.engName),
+                    trailing: Icon(
+                        Icons.keyboard_arrow_right, color: Colors.grey, size: 30.0),
+                    onTap: () {
+                      debugPrint("card Tapped");
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => DetailPage(herb: targetHerb),
+                        ),
+                      );
+                    },
+                  ),
+                ),
               ],
-            ))
+            )),
           ],
         ),
         // body: PhotoView(
@@ -107,6 +196,7 @@ class _SingleHerbState extends State<SingleHerb> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
             FloatingActionButton(
+              heroTag: "cam",
               child: Icon(
                 Icons.camera,
                 color: Colors.white,
@@ -118,6 +208,7 @@ class _SingleHerbState extends State<SingleHerb> {
             Padding(
               padding: const EdgeInsets.all(5.0),
               child: FloatingActionButton(
+                heroTag: "file",
                 child: Icon(
                   Icons.folder_open,
                   color: Colors.white,
@@ -162,20 +253,29 @@ class _SingleHerbState extends State<SingleHerb> {
 
     print("Label: " + first["label"]);
     print("confidence: " + first["confidence"].toString());
-
-    final Future<Database> dbFuture = databaseHelper.database;
-    dbFuture.then((database) {
-      Future<List<Herb>> herbListFuture =
-          databaseHelper.getHerbListbyID(first["label"]);
-      herbListFuture.then((herbList) {
-        setState(() {
-          this.herbList = herbList;
-          this.count = herbList.length;
-          finalImageBytes = imageBytes;
-          currentHerb = this.herbList[0].chName;
+    if(first["confidence"] > threshold) {
+      final Future<Database> dbFuture = databaseHelper.database;
+      dbFuture.then((database) {
+        Future<List<Herb>> herbListFuture =
+        databaseHelper.getHerbListbyID(first["label"]);
+        herbListFuture.then((herbList) {
+          setState(() {
+            confident = true;
+            confidence = first["confidence"];
+            this.herbList = herbList;
+            this.count = herbList.length;
+            finalImageBytes = imageBytes;
+            targetHerb = this.herbList[0];
+            currentHerb = this.herbList[0].chName;
+          });
         });
       });
-    });
+    }else{
+      setState(() {
+        confident = false;
+        finalImageBytes = imageBytes;
+      });
+    }
 
     // setState(() {
     //   finalImageBytes = imageBytes;
