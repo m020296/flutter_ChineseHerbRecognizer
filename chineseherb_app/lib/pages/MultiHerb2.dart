@@ -14,8 +14,10 @@ class MultiHerb2 extends StatefulWidget {
 }
 
 class _MultiHerb2State extends State<MultiHerb2> {
-  @override
   Uint8List finalImageBytes;
+  var resultlist;
+  int resultlistCount;
+  @override
   Widget build(BuildContext context) {
     if (finalImageBytes == null) {
       return new Scaffold(
@@ -34,7 +36,9 @@ class _MultiHerb2State extends State<MultiHerb2> {
                   Icons.camera_alt,
                   color: Colors.white,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  _selectImageAndDectect(context, 1);
+                },
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 5.0),
@@ -46,7 +50,7 @@ class _MultiHerb2State extends State<MultiHerb2> {
                   onPressed: () {
                     print("Before finalImageBytes: " +
                         finalImageBytes.toString());
-                    _selectImageAndDectect(context);
+                    _selectImageAndDectect(context, 2);
                     print(
                         "After finalImageBytes: " + finalImageBytes.toString());
                   },
@@ -61,11 +65,33 @@ class _MultiHerb2State extends State<MultiHerb2> {
         //   title: new Text("多種中藥辨識"),
         //   backgroundColor: Colors.green[900],
         // ),
-        body: new Center(
-            child: PhotoView(
-          imageProvider: MemoryImage(finalImageBytes),
-          backgroundDecoration: BoxDecoration(color: Colors.white),
-        )),
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Expanded(
+                child: ListView(
+              children: <Widget>[
+                Container(
+                  color: Colors.white,
+                  margin: const EdgeInsets.symmetric(
+                      vertical: 20.0, horizontal: 20.0),
+                  height: 200.0,
+                  child: ClipRect(
+                    child: PhotoView(
+                      imageProvider: MemoryImage(finalImageBytes),
+                      maxScale: PhotoViewComputedScale.covered * 2.0,
+                      minScale: PhotoViewComputedScale.covered,
+                      initialScale: PhotoViewComputedScale.covered,
+                    ),
+                  ),
+                ),
+              ],
+            )),
+            Expanded(
+              child: resultToListView(),
+            ),
+          ],
+        ),
         floatingActionButton: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           mainAxisAlignment: MainAxisAlignment.end,
@@ -75,7 +101,9 @@ class _MultiHerb2State extends State<MultiHerb2> {
                 Icons.camera_alt,
                 color: Colors.white,
               ),
-              onPressed: () {},
+              onPressed: () {
+                _selectImageAndDectect(context, 1);
+              },
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 5.0),
@@ -87,7 +115,7 @@ class _MultiHerb2State extends State<MultiHerb2> {
                 onPressed: () {
                   print(
                       "Before finalImageBytes: " + finalImageBytes.toString());
-                  _selectImageAndDectect(context);
+                  _selectImageAndDectect(context, 2);
                   print("After finalImageBytes: " + finalImageBytes.toString());
                 },
               ),
@@ -96,12 +124,53 @@ class _MultiHerb2State extends State<MultiHerb2> {
         ));
   }
 
-  _selectImageAndDectect(BuildContext context) async {
+  ListView resultToListView() {
+    TextStyle titleStyle = Theme.of(context).textTheme.subhead;
+    return ListView.builder(
+      itemCount: resultlistCount,
+      itemBuilder: (BuildContext context, int position) {
+        Color tempColor = HexColor(resultlist[position]['color']);
+        var tempId = resultlist[position]['id'];
+
+        return Card(
+          color: tempColor,
+          elevation: 2.0,
+          child: ListTile(
+            leading: CircleAvatar(backgroundColor: Colors.blueGrey),
+            title: Text(
+              tempId,
+              style: titleStyle,
+            ),
+            subtitle: Text(tempId),
+            trailing: Icon(Icons.keyboard_arrow_right,
+                color: Colors.grey[50], size: 30.0),
+            onTap: () {
+              debugPrint("ListTile Tapped");
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(
+              //     builder: (context) =>
+              //         DetailPage(herb: this.herbList[position]),
+              //   ),
+              // );
+            },
+          ),
+        );
+      },
+    );
+  }
+
+  _selectImageAndDectect(BuildContext context, int src) async {
     Dio dio = new Dio();
     dio.options.baseUrl = "http://gpu38.cse.cuhk.edu.hk:5000";
 
     File image;
-    image = await ImagePicker.pickImage(source: ImageSource.gallery);
+    if (src == 1) {
+      image = await ImagePicker.pickImage(source: ImageSource.camera);
+    } else if (src == 2) {
+      image = await ImagePicker.pickImage(source: ImageSource.gallery);
+    }
+
     print("Original Image: " + image.toString());
 
     List<int> imageBytes = image.readAsBytesSync();
@@ -129,36 +198,30 @@ class _MultiHerb2State extends State<MultiHerb2> {
     String returnImage = resJson['image'];
     Uint8List _base64 = base64.decode(returnImage);
 
-    print(resJson['predictions']);
+    print(resJson['predictions'].length);
 
-    // var utf8Encoded = utf8.encode(returnImage);
-    // var base64Encoded = base64.encode(utf8Encoded);
-    // var finalImg = base64.decode(base64Encoded);
-    // debugPrint("finalImg: " + finalImg.toString());
-    // List<int> encodedImage = utf8.encode(returnImage);
-    // Uint8List bytes = base64.decode(encodedImage);
-
-    // List<int> encoded = Utf8Encoder
-    // String decoded = base64.decode(encoded);
-    // List<int> list = returnImage.codeUnits;
-    // debugPrint("list: " + list.toString());
-    // Uint8List bytes = Uint8List.fromList(list);
-    // String string = String.fromCharCodes(bytes);
-
-    // List<int> encoded = utf8.encode(returnImage);
-    // debugPrint("encoded: " + encoded.toString());
-    // String _base64 = base64Encode(encoded);
-
-    // debugPrint("Base 64 Response: " + _base64.toString());
-    // File responseImage = new File("/storage/emulated/0/Download/new.jpeg'")
-    //   ..writeAsStringSync(reponseData);
-    // String _base64 = base64.encode(data['image'].bodyBytes);
-    // debugPrint("responseImage: " + _base64);
-    // print("Response: " + response.data.toString());
+    for (var pre in resJson['predictions']) {
+      print(pre['id']);
+      print(pre['color']);
+    }
 
     setState(() {
       finalImageBytes = _base64;
+      resultlist = resJson['predictions'];
+      resultlistCount = resJson['predictions'].length;
       return finalImageBytes;
     });
   }
+}
+
+class HexColor extends Color {
+  static int _getColorFromHex(String hexColor) {
+    hexColor = hexColor.toUpperCase().replaceAll("#", "");
+    if (hexColor.length == 6) {
+      hexColor = "FF" + hexColor;
+    }
+    return int.parse(hexColor, radix: 16);
+  }
+
+  HexColor(final String hexColor) : super(_getColorFromHex(hexColor));
 }
