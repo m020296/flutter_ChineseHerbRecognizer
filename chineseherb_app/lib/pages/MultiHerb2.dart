@@ -133,17 +133,17 @@ class _MultiHerb2State extends State<MultiHerb2> {
         var tempId = resultlist[position]['id'];
 
         return Card(
-          color: tempColor,
+          color: Colors.white,
           elevation: 2.0,
           child: ListTile(
-            leading: CircleAvatar(backgroundColor: Colors.blueGrey),
+            leading: CircleAvatar(backgroundColor: tempColor),
             title: Text(
               tempId,
               style: titleStyle,
             ),
             subtitle: Text(tempId),
             trailing: Icon(Icons.keyboard_arrow_right,
-                color: Colors.grey[50], size: 30.0),
+                color: Colors.grey, size: 30.0),
             onTap: () {
               debugPrint("ListTile Tapped");
               // Navigator.push(
@@ -162,7 +162,7 @@ class _MultiHerb2State extends State<MultiHerb2> {
 
   _selectImageAndDectect(BuildContext context, int src) async {
     Dio dio = new Dio();
-    dio.options.baseUrl = "http://gpu38.cse.cuhk.edu.hk:5000";
+    dio.options.baseUrl = "http://gpu39.cse.cuhk.edu.hk:5000";
 
     File image;
     if (src == 1) {

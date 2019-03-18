@@ -77,7 +77,7 @@ class _SingleHerbState extends State<SingleHerb> {
           //   backgroundColor: Colors.green[900],
           // ),
           body: Container(
-            padding: const EdgeInsets.only(top: 10.0),
+            padding: const EdgeInsets.only(top: 10.0, left: 10.0, right: 10.0),
             child: Card(
               color: Colors.white,
               elevation: 2.0,
