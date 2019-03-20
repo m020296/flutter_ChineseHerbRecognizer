@@ -126,6 +126,11 @@ class _SingleHerbState extends State<SingleHerb> {
             ],
           ));
     }
+
+    String file_name = targetHerb.herbID.toString();
+    while(file_name.length < 4){
+      file_name = "0"+file_name;
+    }
     return new Scaffold(
         backgroundColor: Colors.grey[300],
         // appBar: new AppBar(
@@ -163,7 +168,9 @@ class _SingleHerbState extends State<SingleHerb> {
                   color: Colors.white,
                   elevation: 2.0,
                   child: ListTile(
-                    leading: CircleAvatar(backgroundColor: Colors.blueGrey),
+                    leading: CircleAvatar(
+                        backgroundImage: AssetImage("assets/herbs_icon/" + file_name + ".jpg"),
+                        backgroundColor: Colors.blueGrey),
                     title: Text(
                       targetHerb.chName,
                       style: Theme.of(context).textTheme.subhead,
