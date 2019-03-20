@@ -60,38 +60,83 @@ class SearchListState extends State<Search> {
     ]));
   }
 
+  String idToFileName(int id){
+    String file_name = id.toString();
+    while(file_name.length < 4){
+      file_name = "0"+file_name;
+    }
+    return file_name;
+  }
+
+
   ListView getNoteListView() {
     TextStyle titleStyle = Theme.of(context).textTheme.subhead;
 
-    return ListView.builder(
-      itemCount: count,
-      itemBuilder: (BuildContext context, int position) {
-        return Card(
-          color: Colors.white,
-          elevation: 2.0,
-          child: ListTile(
-            leading: CircleAvatar(backgroundColor: Colors.blueGrey),
-            title: Text(
-              this.herbList[position].chName,
-              style: titleStyle,
+//    try{
+      return ListView.builder(
+        itemCount: count,
+        itemBuilder: (BuildContext context, int position) {
+          return Card(
+            color: Colors.white,
+            elevation: 2.0,
+            child: ListTile(
+              leading: CircleAvatar(
+                  backgroundImage: AssetImage("assets/herbs_icon/" + idToFileName(this.herbList[position].herbID) + ".jpg"),
+                  backgroundColor: Colors.blueGrey),
+              title: Text(
+                this.herbList[position].chName,
+                style: titleStyle,
+              ),
+              subtitle: Text(this.herbList[position].engName),
+              trailing: Icon(Icons.keyboard_arrow_right,
+                  color: Colors.grey, size: 30.0),
+              onTap: () {
+                debugPrint("ListTile Tapped");
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        DetailPage(herb: this.herbList[position]),
+                  ),
+                );
+              },
             ),
-            subtitle: Text(this.herbList[position].engName),
-            trailing: Icon(Icons.keyboard_arrow_right,
-                color: Colors.grey, size: 30.0),
-            onTap: () {
-              debugPrint("ListTile Tapped");
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) =>
-                      DetailPage(herb: this.herbList[position]),
-                ),
-              );
-            },
-          ),
-        );
-      },
-    );
+          );
+        },
+      );
+//    }catch(e){
+//      return ListView.builder(
+//        itemCount: count,
+//        itemBuilder: (BuildContext context, int position) {
+//          return Card(
+//            color: Colors.white,
+//            elevation: 2.0,
+//            child: ListTile(
+//              leading: CircleAvatar(
+//                  backgroundColor: Colors.blueGrey),
+//              title: Text(
+//                this.herbList[position].chName,
+//                style: titleStyle,
+//              ),
+//              subtitle: Text(this.herbList[position].engName),
+//              trailing: Icon(Icons.keyboard_arrow_right,
+//                  color: Colors.grey, size: 30.0),
+//              onTap: () {
+//                debugPrint("ListTile Tapped");
+//                Navigator.push(
+//                  context,
+//                  MaterialPageRoute(
+//                    builder: (context) =>
+//                        DetailPage(herb: this.herbList[position]),
+//                  ),
+//                );
+//              },
+//            ),
+//          );
+//        },
+//      );
+//    }
+
   }
 
   void updateListView() {

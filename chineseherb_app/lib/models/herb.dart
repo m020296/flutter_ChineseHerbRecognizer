@@ -6,9 +6,10 @@ class Herb {
   String _taste;
   String _qulity;
   String _shape;
+  String _haveIcon;
 
   Herb(this._herbID, this._chName, this._engName, this._effect, this._taste,
-      this._qulity, this._shape);
+      this._qulity, this._shape, this._haveIcon);
 
   int get herbID => _herbID;
   String get chName => _chName;
@@ -17,6 +18,7 @@ class Herb {
   String get taste => _taste;
   String get qulity => _qulity;
   String get shape => _shape;
+  String get haveIcon => _haveIcon;
 
   set herbID(int newID) {
     this._herbID = newID;
@@ -46,6 +48,10 @@ class Herb {
     this._shape = newShape;
   }
 
+  set haveIcon(String newHaveIcon) {
+    this._haveIcon = newHaveIcon;
+  }
+
   //Convert Herb object to Map object
   Map<String, dynamic> toMap() {
     var map = Map<String, dynamic>();
@@ -59,6 +65,7 @@ class Herb {
     map["taste"] = _taste;
     map["qulity"] = _qulity;
     map["shape"] = _shape;
+    map["haveIcon"] = _haveIcon;
 
     return map;
   }
@@ -71,5 +78,6 @@ class Herb {
     this._taste = map["taste"];
     this._qulity = map["qulity"];
     this._shape = map["shape"];
+    this._haveIcon = map["haveIcon"];
   }
 }
