@@ -64,7 +64,7 @@ class DatabaseHelper {
     await db.execute(
         "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0008','乾薑','Dried Ginger','溫中散寒，回陽通脈，燥濕消痰，溫肺化飲。主治脘腹冷痛；嘔吐；泄瀉，亡陽厥逆；寒飲喘咳；寒濕痹痛','味辛，性熱','以質堅實、斷面色黃白、粉性足、氣味濃者為佳','根莖呈不規則塊狀，略扁，具指狀分枝，長3~7cm，厚1~2cm。表面灰棕色或淺黃棕色，粗糙，具縱皺紋及明顯的環節。分枝處常有鱗葉殘存，分枝頂端有莖痕或芽。質堅實，斷面黃白色或灰白色，粉性和顆粒性，有一明顯圓環 (內皮層)，筋脈點 (維管束) 及黃色油點散在。氣香，特異，味辛辣')");
     await db.execute(
-        "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0009','牛膝','Common Achyranthes','補肝腎；強筋骨；活血通經；引火 (血) 下行；利尿通淋。主治腰膝酸痛；下肢痿軟；血滯經閉；痛經；產後血瘀腹痛；症瘕；胞衣不下；熱淋；血淋；跌打損傷；癰腫惡瘡；咽喉腫痛','味苦；酸；性平','以條長、皮細肉肥、色黃白者為佳','根呈細長圓柱形，有的稍彎曲�����上端稍粗，下端較細，長15~50cm，直徑0.4~1cm。表面及黃色或淡棕色，具細微縱皺紋，有細小橫長皮孔及稀疏的細根痕。質硬而脆，易折斷，斷面平坦，黃棕色，微呈角質樣，中心維管束木部較大，黃白色，其週邊散有多數點狀維管束，排列成2~4輪。氣微，味微甜、澀')");
+        "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0009','牛膝','Common Achyranthes','補肝腎；強筋骨；活血通經；引火 (血) 下行；利尿通淋。主治腰膝酸痛；下肢痿軟；血滯經閉；痛經；產後血瘀腹痛；症瘕；胞衣不下；熱淋；血淋；跌打損傷；癰腫惡瘡；咽喉腫痛','味苦；酸；性平','以條長、皮細肉肥、色黃白者為佳','根呈細長圓柱形，有的稍彎曲，上端稍粗，下端較細，長15~50cm，直徑0.4~1cm。表面及黃色或淡棕色，具細微縱皺紋，有細小橫長皮孔及稀疏的細根痕。質硬而脆，易折斷，斷面平坦，黃棕色，微呈角質樣，中心維管束木部較大，黃白色，其週邊散有多數點狀維管束，排列成2~4輪。氣微，味微甜、澀')");
     await db.execute(
         "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0010','苦參','Lightyellow Sophra Root','清熱燥濕；祛風殺蟲。主濕熱瀉痢；腸風便血；黃疸；小便不利；水腫；帶下；陰癢；疥癬；麻風；皮膚瘙癢；濕毒瘡瘍 ','苦，寒','以條勻、斷面黃白、味極苦者為佳','根長圓柱形，下部常分枝，長10~30cm，直徑l~2.5cm。表面棕黃色至灰棕色，具縱皺紋及橫生皮孔。栓皮薄，常破裂反卷，易剝落，露出黃色內皮。質硬，不易折斷，折斷面纖維性。切片厚3~6mm，切面黃白色，具放射狀紋理。氣微，味苦')");
     await db.execute(
@@ -86,7 +86,7 @@ class DatabaseHelper {
     await db.execute(
         "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0019','白芷','Taiwan Angelica Root','祛風濕，活血排膿，生肌止痛。用於頭痛、牙痛、鼻淵、腸風痔漏、赤白帶下、癰疽瘡瘍、皮膚瘙癢','辛，溫','以條粗壯，質堅硬、體重、色白、粉性足、香氣濃者為佳','根呈圓錐形，長10~20cm，直徑2~2.5cm。表面灰棕色，有橫向突起的皮孔，頂端有凹陷的莖痕。質硬，斷面白色，粉性足，皮部密佈棕色油點。氣芳香，味辛、微苦')");
     await db.execute(
-        "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0020','白朮','Largehead Atractylodes Rhizome','健脾益氣、燥濕利水、止汗、安胎。用於脾虛食少、腹脹泄瀉、痰飲眩悸、水腫、自汗、胎動不安','���������、甘，溫','以個大、堅實、斷面黃白色、香氣濃郁者為佳','根莖呈拳形團塊，長3~13cm，直徑1.5~7cm。表面灰黃色或灰棕色，有瘤狀突起及斷續的縱皺紋和鬚根痕，頂端有殘留莖基和芽痕。質堅硬，不易折斷，斷面不平坦，黃白色至淡棕色，有棕黃色的點狀油室散在。氣清香，味甘、微辛，嚼之略帶粘性')");
+        "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0020','白朮','Largehead Atractylodes Rhizome','健脾益氣、燥濕利水、止汗、安胎。用於脾虛食少、腹脹泄瀉、痰飲眩悸、水腫、自汗、胎動不安','苦、甘，溫','以個大、堅實、斷面黃白色、香氣濃郁者為佳','根莖呈拳形團塊，長3~13cm，直徑1.5~7cm。表面灰黃色或灰棕色，有瘤狀突起及斷續的縱皺紋和鬚根痕，頂端有殘留莖基和芽痕。質堅硬，不易折斷，斷面不平坦，黃白色至淡棕色，有棕黃色的點狀油室散在。氣清香，味甘、微辛，嚼之略帶粘性')");
     await db.execute(
         "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0021','巴戟天','Medicinal Morinda Root','補腎助陽；強筋壯骨；祛風除濕。用於腎虛陽痿；遺精早洩；少腹冷痛；小便不禁；宮冷不孕；風寒濕痹；腰膝酸軟；風濕肢氣','辛、甘，溫','以條肥壯、連珠狀、肉厚、色紫者為佳','根扁圓柱形式圓柱形，略彎曲，長度不等，直徑1~2cm，表面灰黃色或灰黃棕色，有的微帶紫色，具縱皺及深陷的橫紋，有的呈縊縮狀或皮部橫向斷離而露出木部，形如雞腸。質堅韌，折斷面不平，皮部厚5~7mm，淡紫色，木部直徑2~4mm。氣微，味苦，略澀')");
     await db.execute(
@@ -106,7 +106,7 @@ class DatabaseHelper {
     await db.execute(
         "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0029','川芎','Szechwan Lovage Rhizome','活血祛瘀；行氣開鬱；祛風止痛 。用於胸痹心痛，胸脅刺痛，跌撲腫痛，月經不調，經閉痛經，癮瘕腹痛，頭痛，風濕痹痛','辛，溫','以個大飽滿、質堅實、油性大、香氣濃、斷面黃白者為佳','為不規則結節狀拳形團塊，直徑2~7cm。表面黃褐色，粗糙皺縮，有多數平行隆起的輪節，頂端有凹陷的類圓形莖痕，下側及輪節上有多數小瘤狀根痕。質堅實，不易折斷，斷面黃白色或灰黃色，散有黃棕色的油室，形成層呈波狀環紋。氣濃香，味苦、辛。稍有麻舌感，微回甜。飲片邊緣不整齊，呈不規則的類蝴蝶形薄片')");
     await db.execute(
-        "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0030','當歸','Chinese Angelica','補血活血，調經止痛，潤腸通便。用於血虛萎黃、眩暈心悸、月經不調、經閉痛經、虛寒腹痛、腸燥便秘、風濕痹痛、跌撲損傷、癰疽瘡瘍','甘、辛，溫','以主根粗長、油潤、外皮黃棕色、肉質飽滿、香氣濃者為佳','全歸長略呈圓柱形，下部有支根3~5條或更多，長15~25cm。外皮細密，表面黃棕色至棕褐色，具縱皺紋及橫長皮孔。根頭 (歸頭) 直徑1.5~4cm，具環紋，上端圓鈍，有紫色或黃綠��������葉鞘的殘基；主根 (歸身) 表面凹凸不平；支根 (歸尾) 直徑0.3~1cm，上粗下細，多扭，有少數鬚根痕。質柔韌，斷面黃白色或淡黃棕色，皮部厚，有裂隙及多數棕色點狀分泌腔，木部色較淡，形成層環黃棕色。木質部色較淡；根莖部分斷面中心通常有髓和空腔')");
+        "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0030','當歸','Chinese Angelica','補血活血，調經止痛，潤腸通便。用於血虛萎黃、眩暈心悸、月經不調、經閉痛經、虛寒腹痛、腸燥便秘、風濕痹痛、跌撲損傷、癰疽瘡瘍','甘、辛，溫','以主根粗長、油潤、外皮黃棕色、肉質飽滿、香氣濃者為佳','全歸長略呈圓柱形，下部有支根3~5條或更多，長15~25cm。外皮細密，表面黃棕色至棕褐色，具縱皺紋及橫長皮孔。根頭 (歸頭) 直徑1.5~4cm，具環紋，上端圓鈍，有紫色或黃綠的葉鞘的殘基；主根 (歸身) 表面凹凸不平；支根 (歸尾) 直徑0.3~1cm，上粗下細，多扭，有少數鬚根痕。質柔韌，斷面黃白色或淡黃棕色，皮部厚，有裂隙及多數棕色點狀分泌腔，木部色較淡，形成層環黃棕色。木質部色較淡；根莖部分斷面中心通常有髓和空腔')");
     await db.execute(
         "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0031','生地黃','Dried Rehmannia Root','生地黃清熱涼血，養陰生津；','生地黃甘，寒；','生地黃以塊大、體重、斷面烏黑油潤，味甘者為佳；','生地黃呈不規則的圓形或長圓形塊狀，長6~12cm，直徑3~6cm；表面灰棕色或灰黑色，全體皺縮不平，具不規則的橫曲紋；細小的多為長條狀，稍扁而扭曲；質柔軟，乾後則堅實，體重，不易折斷，斷面平坦，紫黑色或烏黑色而光亮，顯油潤，具粘性；氣微香，味微甜')");
     await db.execute(
@@ -128,7 +128,7 @@ class DatabaseHelper {
     await db.execute(
         "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0040','黃芪','Membranous Milkvetch Root','補氣固表，利尿托毒，排膿，斂瘡生肌的功效。用於氣虛乏力，食少便溏，中氣下陷，久瀉脫肛，便血崩漏，表虛自汗，癰疽難潰，久潰不斂，血虛萎黃，內熱消渴','甘，溫','以根條粗長、菊花心鮮明、空洞小、破皮少者為佳；紅芪以皮色紅潤、根條均勻、堅實、粉性足者為佳','直根圓柱形、有的有分枝，上端較粗，長30~90釐米，直徑1~3.5釐米，表面縱皺色淡棕黃色或淡棕褐色，有不整齊的縱皺紋或縱溝質，硬而韌有粉性，皮部黃白較疏鬆；木部菊花紋理狀，氣似豆腥味微甜。老根中心偶有枯朽狀，黑褐色或呈空洞。氣微，味微甜，嚼之微有豆腥味')");
     await db.execute(
-        "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0041','黃芩','Baikal Skullcap Root','清熱燥濕，瀉火解毒，止血，安胎，降血壓。用於濕溫、暑溫胸悶嘔惡，濕熱痞滿，瀉痢，黃疸，肺熱咳嗽，高熱煩渴，血熱吐衄，癰腫瘡毒，胎動不安','苦��寒','以��長��質堅實、色黃者為佳','該品呈圓錐形，扭曲，長8~25cm，直徑1~3cm。表面棕黃色或深黃色，有稀疏的疣狀細根痕，上部較粗糙，有扭曲的縱皺或不規則的網紋，下部有順紋和細皺。質硬而脆，易折斷，斷面黃色，中間紅棕色，通稱子芩，以清火養陰為主；老根中間呈暗棕色或棕黑色，枯朽狀或已成空洞，稱枯芩，以清火敗毒為主。氣微，味苦')");
+        "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0041','黃芩','Baikal Skullcap Root','清熱燥濕，瀉火解毒，止血，安胎，降血壓。用於濕溫、暑溫胸悶嘔惡，濕熱痞滿，瀉痢，黃疸，肺熱咳嗽，高熱煩渴，血熱吐衄，癰腫瘡毒，胎動不安','苦，寒','以根長、質堅實、色黃者為佳','該品呈圓錐形，扭曲，長8~25cm，直徑1~3cm。表面棕黃色或深黃色，有稀疏的疣狀細根痕，上部較粗糙，有扭曲的縱皺或不規則的網紋，下部有順紋和細皺。質硬而脆，易折斷，斷面黃色，中間紅棕色，通稱子芩，以清火養陰為主；老根中間呈暗棕色或棕黑色，枯朽狀或已成空洞，稱枯芩，以清火敗毒為主。氣微，味苦')");
     await db.execute(
         "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0042','胡黃連','Figwortflower Picrorhiza Rhizome','清熱，涼血，燥濕。 陰虛骨蒸；潮熱盜汗；小兒疳疾；濕熱瀉痢；黃疸；吐血；衄血；目赤腫痛；癰腫瘡瘍；痔瘡腫毒','苦，寒','以條粗、折斷時有粉塵、斷面灰黑色、味苦者為佳','根莖圓柱形，平直或彎曲，多不分枝，市售品多為小段，長2~9cm，直徑3~8mm。表面灰黃色至黃棕色，有光澤，粗糙，具縱皺及橫環紋，栓皮脫落處呈褐色；上端有殘留的葉跡，密集呈鱗片狀，暗紅棕色，或脫落後呈半圓狀的節痕。根痕圓點狀，近節處較多。質硬而脆，易折斷，折斷時有粉塵；斷面可見維管束小點4~7個，排列成環。氣微，味極苦而持久')");
     await db.execute(
@@ -150,7 +150,7 @@ class DatabaseHelper {
     await db.execute(
         "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0051','射干','Blackberrglily Rhizome','清熱解毒，利咽喉，消痰涎。主治喉痹咽痛，咳逆上氣，痰涎壅盛，瘰鬁結核，瘧母，婦女經閉，癰腫瘡毒','苦，寒','以肥壯、肉色黃、無毛須者為佳','乾燥根莖呈不規則的結節狀，長約3~10cm，直徑1~1.5cm。表面灰褐色或有黑褐色斑，皺縮有斜向或扭曲的環狀皺紋，排列甚密，上面有圓盤狀凹陷莖痕，下面有殘留的細根及根痕。質堅硬，斷面黃色，顆粒狀。氣微，味苦')");
     await db.execute(
-        "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0052','升麻','Skunk Bugbane Rhizome','發表透疹，清熱解毒，升舉陽氣。用於風熱頭痛，齒痛，口瘡，咽喉腫痛，麻疹不透，陽毒發斑；脫肛，子宮脫垂','辛、微辛，微寒','以體輕泡、���堅���表���黑���色且個大者為佳','呈不規則的長形塊狀，多分枝，呈結節狀，長10~20cm，直徑2~4cm。表面黑褐色或棕褐色，粗糙不平，有堅硬的細鬚根殘留，上面有數個圓形空洞的莖基痕，洞內壁顯放射狀網紋；下面凹凸不平，具鬚根痕。體輕，質堅硬，不易折斷，斷面不平坦，有裂隙，纖維性，黃綠色或淡黃白色。氣微，味微苦而澀')");
+        "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0052','升麻','Skunk Bugbane Rhizome','發表透疹，清熱解毒，升舉陽氣。用於風熱頭痛，齒痛，口瘡，咽喉腫痛，麻疹不透，陽毒發斑；脫肛，子宮脫垂','辛、微辛，微寒','以體輕泡、質堅、表變黑褐色且個大者為佳','呈不規則的長形塊狀，多分枝，呈結節狀，長10~20cm，直徑2~4cm。表面黑褐色或棕褐色，粗糙不平，有堅硬的細鬚根殘留，上面有數個圓形空洞的莖基痕，洞內壁顯放射狀網紋；下面凹凸不平，具鬚根痕。體輕，質堅硬，不易折斷，斷面不平坦，有裂隙，纖維性，黃綠色或淡黃白色。氣微，味微苦而澀')");
     await db.execute(
         "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0053','石菖蒲','Tatarinow Sweerflag Rhizome','化濕開胃，開竅豁痰，醒神益智。用於脘痞不饑，噤口下痢，神昏癲癇，健忘耳聾','辛、苦，溫','以條粗、斷面色類白、香氣濃者為佳','根莖呈扁圓柱形，稍彎曲，常有分枝，長3~20cm，直徑0.3~1cm。表面棕褐色、棕紅色或灰黃色，粗糙，多環節，節間長2~8mm；上側有略呈扁三角形的葉痕，左右交互排列，下側有圓點狀根痕，節部有時殘留有毛鱗狀葉基。質硬脆，折斷面纖維性，類白色或微紅色；橫切面內皮層環明顯，可見多數“筋脈點”及棕色油點。氣芳香，味苦、微辛')");
     await db.execute(
@@ -192,7 +192,7 @@ class DatabaseHelper {
     await db.execute(
         "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0072','鉤藤','Sharpleaf Uncaria Stem with Hools','清熱平肝；熄風止痙。小兒驚風；夜啼；熱盛動風；子癇；肝陽眩暈；肝火頭脹痛','甘，涼','以莖細、帶雙鉤、鉤結實、光滑、紫紅色者為佳','莖枝圓柱形或類方柱形，直徑2~6mm。表面紅棕色至紫棕色或棕褐色，上有細縱紋，無毛。莖上具略突起的環節，對生兩個向下彎曲的鉤或僅一側有鉤，鉤長1~2cm，形如船鋪，先端漸尖，基部稍圓。鉤基部的枝上可見葉柄脫落後凹點及環狀的托葉痕。體輕，質硬。橫截面外層棕紅色，髓部淡棕色或淡黃色。氣微，味淡')");
     await db.execute(
-        "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0073','桂枝','Cassiabarktree Twig','發汗解肌，溫通經脈，助陽化氣，平沖降氣。用於風寒感冒，脘腹冷痛，血寒經閉，關節痹痛，痰飲，水腫，心悸，奔豚','辛、甘，溫','以枝條細嫩均勻、棕黃色、氣香濃者為佳','呈長圓柱形，多分枝，長30~75cm，粗端直徑0.3~1cm。表面紅棕色至棕色，有縱棱線、細皺紋及小疙瘩狀的葉痕、枝痕、芽痕，皮孔點狀。質硬而脆，易折斷。切片厚2~4mm，斷面皮部紅棕色，木部黃白色至淺黃棕色，髓部略���方形。���特異香���，味甜���微辛，皮部味較濃')");
+        "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0073','桂枝','Cassiabarktree Twig','發汗解肌，溫通經脈，助陽化氣，平沖降氣。用於風寒感冒，脘腹冷痛，血寒經閉，關節痹痛，痰飲，水腫，心悸，奔豚','辛、甘，溫','以枝條細嫩均勻、棕黃色、氣香濃者為佳','呈長圓柱形，多分枝，長30~75cm，粗端直徑0.3~1cm。表面紅棕色至棕色，有縱棱線、細皺紋及小疙瘩狀的葉痕、枝痕、芽痕，皮孔點狀。質硬而脆，易折斷。切片厚2~4mm，斷面皮部紅棕色，木部黃白色至淺黃棕色，髓部略呈方形。有特異香氣，味甜、微辛，皮部味較濃')");
     await db.execute(
         "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0074','木通','Akabia Stem','清熱利尿；活血通脈。主小便赤赤；淋濁；水腫；胸中煩熱；喉喉疼痛；口舌生瘡；風濕痹痛；乳汁不通；經閉；痛經','苦，微寒','以條粗、均勻者為佳','白木通藤莖直徑5~8mm。表面黃棕色或暗棕色，有不規則縱溝紋；有枝痕。質堅韌，難折斷，斷面木部淡黃色，導管細密，排列不規則，射線約13條，淺黃色放射狀，髓類圓形。氣微，味徽苦')");
     await db.execute(
@@ -214,7 +214,7 @@ class DatabaseHelper {
     await db.execute(
         "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0083','檳榔','Betelnutpalm Seed','驅蟲；消積；下氣；行水；截瘧。蟲積；食滯；脘腹脹痛；瀉痢後重；腳氣；水腫；瘧疾','苦、辛，溫','以果大體重、堅實、不破裂者為佳','乾燥種子呈圓錐形或扁圓球形，高1.5~3cm，基部直徑2~3cm，表面淡黃棕色或黃棕色，粗糙，有顏色較淺的網形凹紋，並偶有銀色斑片狀的內果皮附著。基部中央有圓形凹陷的珠孔，其旁有淡色的疤痕狀的種臍。質堅實，縱剖面可見外緣的棕色種皮向內褶入，與乳白色的胚乳交錯，形成大理石樣花紋。基部珠孔內側有小形的胚，常呈棕色，乾枯皺縮不顯。氣無，味澀而微苦')");
     await db.execute(
-        "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0084','補骨脂','Malaytea Scurfpea Fruit','補腎助陽；納氣平喘；溫脾止瀉。主腎陽不足；下元虛冷；腰膝冷痛；陽痿遺精；尿頻；遺尿；腎不納氣；虛喘不止；脾腎兩虛；大便久瀉；白癜風；斑禿；銀屑病','辛、苦，溫','以粒大、飽滿、黑色者為佳','果實扁圓狀腎形，一端略尖，少有宿萼。懷補骨脂長4~5.5mm，寬約2~4mm，厚約1mm；川補骨脂較小。表面黑棕色或棕褐色，具微細網紋，在放大鏡下可見點狀凹��紋��。質��硬脆��剖開後可見果皮與外種皮緊密貼生，種子凹側的上端略下處可見點狀種臍，另一端有合點，種脊不明顯。外種皮較硬，內種皮膜質，灰白色；子葉2枚，肥厚，淡黃色至淡黃棕色，陳舊者色深，其內外表面常可見白色物質，於放大鏡下觀察為細小針晶；胚很小。宿萼基部連合，上端5裂，灰黃色，具毛茸，並密佈褐色腺點。氣芳香特異、味苦微辛')");
+        "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0084','補骨脂','Malaytea Scurfpea Fruit','補腎助陽；納氣平喘；溫脾止瀉。主腎陽不足；下元虛冷；腰膝冷痛；陽痿遺精；尿頻；遺尿；腎不納氣；虛喘不止；脾腎兩虛；大便久瀉；白癜風；斑禿；銀屑病','辛、苦，溫','以粒大、飽滿、黑色者為佳','果實扁圓狀腎形，一端略尖，少有宿萼。懷補骨脂長4~5.5mm，寬約2~4mm，厚約1mm；川補骨脂較小。表面黑棕色或棕褐色，具微細網紋，在放大鏡下可見點狀凹。質較硬脆，剖開後可見果皮與外種皮緊密貼生，種子凹側的上端略下處可見點狀種臍，另一端有合點，種脊不明顯。外種皮較硬，內種皮膜質，灰白色；子葉2枚，肥厚，淡黃色至淡黃棕色，陳舊者色深，其內外表面常可見白色物質，於放大鏡下觀察為細小針晶；胚很小。宿萼基部連合，上端5裂，灰黃色，具毛茸，並密佈褐色腺點。氣芳香特異、味苦微辛')");
     await db.execute(
         "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0085','草豆蔻','Katsumada Galangal Seed','化濕消痞，行氣溫中，開胃消食。用於濕濁中阻，不思飲食，濕溫初起胸悶不饑，寒濕嘔逆，胸腹脹痛，食積不消','辛，溫','以種子飽滿、堅實、類球形、氣濃者為佳','該品為類球形的種子團，直徑1.5~2.7cm。表面灰褐色，中間有黃白色的隔膜，將種子團分成3 瓣，每瓣有種子多數，粘連緊密，種子團略光滑。種子為卵圓狀多面體，長3~5mm，直徑約3mm，外被淡棕色膜質假種皮，種脊為一條縱溝，一端有種臍；質硬，將種子沿種脊縱剖兩瓣，縱斷面觀呈斜心形，種皮沿種脊向內伸入部分約占整個表面積的1/2 ；胚乳灰白色。氣香，味辛，微苦')");
     await db.execute(
@@ -236,7 +236,7 @@ class DatabaseHelper {
     await db.execute(
         "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0094','訶子','Medicine Terminalia','斂肺；澀腸；下氣；利咽，清涼解毒。主治久瀉；久痢；脫肛；喘咳痰嗽；久咳失音','苦、酸、澀，平','以棕黃色、個大、微皺而有光澤者為佳','果實呈卵形或橢圓形，長2.4cm，直徑2~2.5cm。表面棕褐色，略具光澤，有5~6條縱菱形及不規則的皺紋，在縱棱線之間有1~2條明顯或不明顯的縱凸起，可見細密橫向紋理，基部有圓形果柄痕。質堅實，剖開後，果肉厚2~4mm，黃棕色或黃褐色。果核長l.5~2.5cm，淺黃色，粗糙，堅硬、種子一粒，狹長紡錘形，長約1cm，直徑2~4mm，膜質種皮黃棕色，子葉2，白色，相互重疊卷旋。無臭，味酸澀而後甜')");
     await db.execute(
-        "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0095','萊菔子','Garden Radish Seed','消食除脹，降氣化痰。用於飲食停滯、脘腹脹痛、大便秘結���積滯瀉痢、���壅喘咳','辛���甘，平','以���滿粒大、堅實、紅棕色者為佳','種子類卵圓形或橢圓形，稍扁，長2.5~4mm，寬2~3mm。表面黃棕色、紅棕色或灰棕色，一端有深棕色圓形種臍，一側有數條縱溝。種皮薄而脆，子葉2，黃白色，有油性。味淡、微苦、辛')");
+        "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0095','萊菔子','Garden Radish Seed','消食除脹，降氣化痰。用於飲食停滯、脘腹脹痛、大便秘結、積滯瀉痢、痰壅喘咳。','辛、甘，平','以飽滿粒大、堅實、紅棕色者為佳','種子類卵圓形或橢圓形，稍扁，長2.5~4mm，寬2~3mm。表面黃棕色、紅棕色或灰棕色，一端有深棕色圓形種臍，一側有數條縱溝。種皮薄而脆，子葉2，黃白色，有油性。味淡、微苦、辛')");
     await db.execute(
         "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0096','連翹','Weeping Forsythia Fruit','清熱解毒，消腫散結，疏散風熱，有“瘡家聖藥”之稱。治溫熱，丹毒，斑疹，癰瘍腫毒，瘰鬁，小便淋閉，清心火','苦、微寒','青翹以色綠、不開裂者為佳','青翹：呈狹卵形至卵形，兩端狹尖，多不開裂。表面青綠色，綠褐色，有兩條縱溝和凸起小斑點，內有縱隔。質堅硬。氣芳香，味苦。間有殘留果柄')");
     await db.execute(
@@ -260,7 +260,7 @@ class DatabaseHelper {
     await db.execute(
         "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0106','葶藶子','Pepperweed Seed','瀉肺降氣；祛痰平喘；利水消腫；泄逐邪。主治痰涎壅肺之喘咳痰多；肺癰；水腫；胸腹積水；小便不利；慢性肺源性心臟病；心力衰竭之喘腫；瘰鬁結核','辛、苦，大寒','以子粒充實、均勻、紅棕色者為佳','北葶藶子：種子扁卵形，長1~1.5-mm，寬0.5~1mm。表面黃棕色或紅棕色，微有光澤，具多數細微顆粒狀突起，並可見2條縱列的淺槽，其中一條較明顯，一端鈍圓，另端漸尖而微凹，種臍位於凹下處，但不明顯。無臭，味微苦辛，粘性較強')");
     await db.execute(
-        "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0107','菟絲子','Chinese Dodder Seed','補腎益精、養肝明目、固胎止泄','甘，溫','以粒飽滿者為佳','菟絲子種子類圓形，腹棱線��顯，��側常凹��，長徑1.4~1.6mm，短徑0.9~1.1mm。表面灰棕色或黃棕色，因具有細密突起的小點兒微粗糙，種皮堅硬，不易破碎，除去種皮可中央為卷旋3周的胚，胚乳膜質套狀，位於胚周圍，氣微，味微苦、澀')");
+        "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0107','菟絲子','Chinese Dodder Seed','補腎益精、養肝明目、固胎止泄','甘，溫','以粒飽滿者為佳','菟絲子種子類圓形，腹棱線明顯，兩側常凹陷，長徑1.4~1.6mm，短徑0.9~1.1mm。表面灰棕色或黃棕色，因具有細密突起的小點兒微粗糙，種皮堅硬，不易破碎，除去種皮可中央為卷旋3周的胚，胚乳膜質套狀，位於胚周圍，氣微，味微苦、澀')");
     await db.execute(
         "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0108','五味子','Chinese Magnoliavine Fruit','收斂固澀，益氣生津，補腎寧心。用於久嗽虛喘，夢遺滑精，遺尿尿頻，久瀉不止，自汗，盜汗，津傷口渴，短氣脈虛，內熱消渴，心悸失眠','酸、甘，溫','以紫紅色、粒大、肉厚、有油性及光澤者為佳','乾燥果實略呈球形或扁球形，直徑5~8mm。外皮鮮紅色，紫紅色或暗紅色。顯油潤，有不整齊的皺縮。果肉柔軟，常數個粘連一起；內含種子1~2枚，腎形，棕黃色，有光澤，堅硬，種仁白色。果肉氣微弱而特殊，味酸。種子破碎後有香氣，味辛而苦')");
     await db.execute(
@@ -282,7 +282,7 @@ class DatabaseHelper {
     await db.execute(
         "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0117','枸杞子','Babury Wolfberry Fruit','滋補肝腎，益精明目','甘，平','以粒大，色澤鮮亮者為佳','呈類紡錘形或橢圓形，表面紅色或暗紅色，項端有小突起狀的花柱痕，基部有白色的果梗痕。果皮柔韌，皺縮；果肉肉質，柔潤。種子20~50粒，類腎形。扁而翹，表面淺黃色或棕黃色。氣微，味甜')");
     await db.execute(
-        "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0118','芡實','Gordon Euryale Seed','益腎固精，補脾止渭，除濕止帶。用於遺精滑精，遺尿尿頻，脾虛久瀉，自濁，帶下','甘、澀。平','以顆粒飽滿均勻、粉性足、無碎末及皮���者為佳','類球形���多為破粒。表面���棕紅色內種皮，���端黃自色，約占全體1/3、有凹點狀的種臍痕，除去內種皮顯白色。質較硬，斷面白色，粉性。氣微，味淡')");
+        "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0118','芡實','Gordon Euryale Seed','益腎固精，補脾止渭，除濕止帶。用於遺精滑精，遺尿尿頻，脾虛久瀉，自濁，帶下','甘、澀。平','以顆粒飽滿均勻、粉性足、無碎末及皮殼者為佳','類球形，多為破粒。表面有棕紅色內種皮，一端黃自色，約占全體1/3、有凹點狀的種臍痕，除去內種皮顯白色。質較硬，斷面白色，粉性。氣微，味淡')");
     await db.execute(
         "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0119','山茱萸','Common Macrocarpium Fruit','補益肝腎，澀精固脫。用於眩暈耳鳴，腰膝酸痛，陽痿遺精，遺尿尿頻，崩漏帶下，大汗虛脫，內熱消渴','酸、澀，微溫','以皮肉厚，色鮮豔，味酸濃者佳','本品呈不規則的片狀或囊狀。表面紫紅色至紫黑色，皺縮，有光澤。頂端有的有圓形宿萼痕，基部有果梗痕。質柔軟。氣微，味酸、澀、微苦')");
     await db.execute(
@@ -324,7 +324,7 @@ class DatabaseHelper {
     await db.execute(
         "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0138','槐花','Black Locust Flower','涼血止血，清肝瀉火。主治腸風便血，痔血，血痢，尿血，血淋，崩漏，吐血，衄血，肝火頭痛，目赤腫痛，喉痹，失音，癰疽瘡瘍','苦，微寒','以黃綠色、粒大、緊實者為佳','皺縮而捲曲，花瓣多散落，完整者花萼鐘狀，黃綠色，花瓣黃色或黃白色。體輕。味微苦。花蕾 (槐米) 卵形或橢圓形。花萼黃綠色，上方為未開放的黃白色花瓣，內呈黃褐色。質輕。味微苦澀')");
     await db.execute(
-        "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0139','金銀花','Japanese Honysuckle Flower Bud','宣散風熱，清熱解毒。用於各種熱性病，如身熱、發疹、發斑、熱毒瘡癰、咽喉腫痛等證','甘，寒','以花蕾多、色淡、柔軟氣清香者為佳','本品呈棒狀，上粗下細，略彎曲，長2~3cm，上部直徑3mm，下部直徑1.5mm，表面黃白色或綠白色，密被短柔毛。偶見葉狀苞片，花萼綠色、先端5裂，裂片有毛，長約2mm，開放者���冠筒狀���先端二唇���，雄蕊5附於筒壁，黃色；雌蕊1個，子房無毛，氣清香，味淡微苦')");
+        "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0139','金銀花','Japanese Honysuckle Flower Bud','宣散風熱，清熱解毒。用於各種熱性病，如身熱、發疹、發斑、熱毒瘡癰、咽喉腫痛等證','甘，寒','以花蕾多、色淡、柔軟氣清香者為佳','本品呈棒狀，上粗下細，略彎曲，長2~3cm，上部直徑3mm，下部直徑1.5mm，表面黃白色或綠白色，密被短柔毛。偶見葉狀苞片，花萼綠色、先端5裂，裂片有毛，長約2mm，開放者花冠筒狀，先端二唇形，雄蕊5附於筒壁，黃色；雌蕊1個，子房無毛，氣清香，味淡微苦')");
     await db.execute(
         "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0140','菊花','Florists Dendranthema','清熱解毒，平肝明目；疏風散熱','苦，微寒','以花朵完整、顏色鮮豔、清香者為佳','滁菊：呈不規則球形或扁球形，直徑1.5~2.5cm，舌狀花類白色，不規則扭曲，內卷，邊緣皺縮，有時可見淡褐色的腺點，管狀花大多隱藏。是菊花中花瓣最為緊密的一種')");
     await db.execute(
@@ -348,7 +348,7 @@ class DatabaseHelper {
     await db.execute(
         "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0150','石韋','Japanese Felt Fern','利尿通淋，清熱止血。用於熱淋，血淋，石淋，小便不通，淋瀝澀痛，吐血，衄血，尿血，崩漏，肺熱喘咳','甘、苦，微寒','以葉片完整、葉厚而大、背面色發紅且有小點者為佳','有柄石韋：葉片多捲曲呈筒狀，展平後呈長圓形或卵狀長圓形，長3~8cm，寬1~2.5cm。基部楔形，對稱。下表面側脈不明顯，佈滿孢子囊群。葉柄長3~12cm，直徑約1mm')");
     await db.execute(
-        "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0151','紫蘇葉','Cultibated Purple Perilla Leaf','發表，散寒，理氣，和營。治感冒風寒，惡寒發熱，咳嗽，頭痛無汗，氣喘，胸腹脹滿，嘔惡腹瀉，咽中梗阻，妊娠惡阻，胎動不安。並能解魚蟹毒','辛，微溫','以葉大、色紫、不碎、香氣濃、���枝梗者為佳','乾燥完���的葉呈卵形或圓卵形���多數皺縮捲曲，或已���碎，兩面均棕紫色，或上面灰綠色，下面棕紫色，兩面均有稀毛；先端尖，邊緣有鋸齒，基部近圓形，有柄，質薄而脆。切碎品多混有細小莖枝。莖四方形，有槽，外皮黃紫色，有時剝落，木質部黃白色，中央有白色疏鬆的髓。氣芳香，味微辛')");
+        "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0151','紫蘇葉','Cultibated Purple Perilla Leaf','發表，散寒，理氣，和營。治感冒風寒，惡寒發熱，咳嗽，頭痛無汗，氣喘，胸腹脹滿，嘔惡腹瀉，咽中梗阻，妊娠惡阻，胎動不安。並能解魚蟹毒','辛，微溫','以葉大、色紫、不碎、香氣濃、無枝梗者為佳','乾燥完整的葉呈卵形或圓卵形，多數皺縮捲曲，或已破碎，兩面均棕紫色，或上面灰綠色，下面棕紫色，兩面均有稀毛；先端尖，邊緣有鋸齒，基部近圓形，有柄，質薄而脆。切碎品多混有細小莖枝。莖四方形，有槽，外皮黃紫色，有時剝落，木質部黃白色，中央有白色疏鬆的髓。氣芳香，味微辛')");
     await db.execute(
         "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0152','百合','Liy Bulb','養陰潤肺，清心安神。用於陰虛久咳，痰中帶血，虛煩驚悸，失眠多夢，精神恍惚','甘，寒','以瓣勻肉厚、色黃白、質堅、筋少者為佳','細葉百合：鱗葉長約5.5cm，寬約2.5cm，厚至3.5mm，色較暗，脈紋不太明顯')");
     await db.execute(
@@ -370,7 +370,7 @@ class DatabaseHelper {
     await db.execute(
         "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0161','茯苓','Tuckahoe','滲濕利水，健脾和胃，寧心安神。小便不利；水腫脹滿；痰飲咳逆；嘔吐；脾虛食少；泄瀉；心悸不安；失眠健忘；遺精白濁','甘、淡，平','以體重堅實、外皮棕褐色、皮紋細、無裂隙、斷面白色細膩、粘牙力強者為佳','常見者為其菌核體。多為不規則的塊狀，球形、扁形、長圓形或長橢圓形等，大小不一，小者如拳，大者直徑達20~30cm，或更大。表皮淡灰棕色或黑褐色，呈瘤狀皺縮，內部白色稍帶粉紅，由無數菌絲組成。子實體傘形，直徑0.5~2mm，口緣稍有齒；有性世代不易見到，蜂窩狀，通常附菌核的外皮而生，初白色，後逐漸轉變為淡棕色，孔作多角形，擔子棒狀，擔孢子橢圓形至圓柱形，稍屈曲，一端尖，平滑，無色。有特殊臭氣')");
     await db.execute(
-        "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0162','豬苓','Agaric','利水滲濕。用於小便不利，水腫，泄瀉，淋濁，帶下','甘、淡，平','以��大、體結、��重、皮黑光亮��肉白、��性足者為佳','豬苓呈條形、類圓形或扁塊狀，有的有分枝，長5~25cm，直徑2~6cm。體���，質硬，略呈顆粒狀。表���黑色、灰黑色或棕黑色，皺縮或有瘤狀突起，斷面類白色或黃白色。氣微，味淡')");
+        "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0162','豬苓','Agaric','利水滲濕。用於小便不利，水腫，泄瀉，淋濁，帶下','甘、淡，平','以個大、體結、質重、皮黑光亮、肉白、粉性足者為佳','豬苓呈條形、類圓形或扁塊狀，有的有分枝，長5~25cm，直徑2~6cm。體輕，質硬，略呈顆粒狀。表面黑色、灰黑色或棕黑色，皺縮或有瘤狀突起，斷面類白色或黃白色。氣微，味淡')");
     await db.execute(
         "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0163','沒藥','Myrrh','散血去瘀，消腫定痛','辛、苦，平','以塊大、色紅棕、半透明、香氣濃而持久、雜質少者為佳','膠質沒藥：成不規則塊狀，多黏結成大小不等的團塊。表面深棕色或黃棕色，不透明；質堅實或疏鬆。味苦而有黏性')");
     await db.execute(
@@ -392,7 +392,7 @@ class DatabaseHelper {
     await db.execute(
         "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0172','羚羊角','Antelope Hom','平肝息風，清肝明目，散血解毒。用於高熱驚癇，神昏痙厥，子癇抽搐，癲癇發狂，頭痛眩暈，目赤翳障，溫毒發斑，癰腫瘡毒','鹹，寒','以質嫩、色白、光潤、內涵紅色斑紋且無裂紋者佳','羚羊角縱片：為縱向條狀薄片，類白色或黃白色，表面光滑，半透明，有光澤。氣微，味淡')");
     await db.execute(
-        "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0173','牡蠣','Common Oyster Shell','重鎮安神，潛陽補陰，軟堅散結。用於驚悸失眠，眩暈耳鳴，瘰鬁痰核，症瘕痞塊。煆牡蠣收斂固澀。用於自汗盜汗，遺精崩帶，胃痛吞酸','鹹，微寒','以質堅、內面光潔、色���者為佳','近江牡蠣：呈圓���、卵圓形或三角形等。右殼外���稍不平，有灰、紫、棕、黃等���，環生同心鱗片，幼體者鱗片薄而脆，多年生長後鱗片層層相疊，內面白色，邊緣有的淡紫色')");
+        "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0173','牡蠣','Common Oyster Shell','重鎮安神，潛陽補陰，軟堅散結。用於驚悸失眠，眩暈耳鳴，瘰鬁痰核，症瘕痞塊。煆牡蠣收斂固澀。用於自汗盜汗，遺精崩帶，胃痛吞酸','鹹，微寒','以質堅、內面光潔、色白者為佳','近江牡蠣：呈圓形、卵圓形或三角形等。右殼外面稍不平，有灰、紫、棕、黃等色，環生同心鱗片，幼體者鱗片薄而脆，多年生長後鱗片層層相疊，內面白色，邊緣有的淡紫色')");
     await db.execute(
         "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0174','牛黃','Bezoar','清心，豁痰，開竅，涼肝，息風，解毒。用於熱病神昏，中風痰迷，驚癇抽搐，癲癇發狂，咽喉腫痛，口舌生瘡，癰腫疔瘡','甘，涼','以完整鬆脆、棕黃色、斷面層紋清晰細膩者為佳','該品多呈卵形、類球形、三角形或四方形等，大小不一，直徑0.6~3(4.5)cm，少數呈管狀或碎片。表面黃紅色至棕黃色，有的表面掛有一層黑色光亮的薄膜，有的粗糙，具疣狀突起，有的具龜裂紋。體輕，質酥脆，易分層剝落，斷面金黃色，可見細密的同心層紋，有的夾有白心。氣清香，味苦而後甘，有清涼感，嚼之易碎，不粘牙')");
     await db.execute(
@@ -414,7 +414,7 @@ class DatabaseHelper {
     await db.execute(
         "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0183','雄黃','Red Orpiment','解毒殺蟲，燥濕祛痰，截瘧。用於癰腫疔瘡，蛇蟲咬傷，蟲積腹痛，驚癇，瘧疾','辛，溫，有毒','以塊大、紅色、質鬆脆為佳',') 和砷華，不溶于水和鹽酸，可溶於硝酸，溶液呈黃色')");
     await db.execute(
-        "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0184','朱砂','Cinnabar','清心鎮驚，安神解毒，用於心悸易驚，失眠多夢，癲癇發狂，小兒驚風視物昏花，口瘡，喉痹，瘡瘍腫毒','甘，微寒，有小毒','以色鮮紅、有光澤、體重、質脆者為佳','三方晶系。為粒狀或塊狀集合體，呈顆粒狀或塊片狀。鮮紅色或暗紅色條痕紅色至褐紅色，具光澤。有平行的完全解理。斷口呈半貝殼狀或參差狀。硬度2~2.5。比重8.09~8.2。體重，質脆，片狀者易破碎，粉末狀者有閃爍的光澤，無味。金剛、半金屬、暗淡光澤。其中呈細小顆粒或粉末狀，色紅明亮，觸之不染手者，習稱“朱寶砂”；呈不規則板片狀、斜方形或長條形，大小厚薄不一，邊緣不整齊，色紅而鮮豔，光亮如鏡面而為透���，質較鬆脆者，習稱“鏡面砂���；方塊較大，方圓形或多角形，色���暗或呈灰褐色，質重而堅，不易碎���習稱“豆瓣砂”')");
+        "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0184','朱砂','Cinnabar','清心鎮驚，安神解毒，用於心悸易驚，失眠多夢，癲癇發狂，小兒驚風視物昏花，口瘡，喉痹，瘡瘍腫毒','甘，微寒，有小毒','以色鮮紅、有光澤、體重、質脆者為佳','三方晶系。為粒狀或塊狀集合體，呈顆粒狀或塊片狀。鮮紅色或暗紅色條痕紅色至褐紅色，具光澤。有平行的完全解理。斷口呈半貝殼狀或參差狀。硬度2~2.5。比重8.09~8.2。體重，質脆，片狀者易破碎，粉末狀者有閃爍的光澤，無味。金剛、半金屬、暗淡光澤。其中呈細小顆粒或粉末狀，色紅明亮，觸之不染手者，習稱“朱寶砂”；呈不規則板片狀、斜方形或長條形，大小厚薄不一，邊緣不整齊，色紅而鮮豔，光亮如鏡面而為透明，質較鬆脆者，習稱“鏡面砂”；方塊較大，方圓形或多角形，色發暗或呈灰褐色，質重而堅，不易碎者習稱“豆瓣砂”')");
     await db.execute(
         "INSERT INTO $herbTable($colHerbID, $colChName, $colEngName, $colEffect, $colTaste, $colQulity, $colShape) VALUES('0185','石膏','Gypsum','清熱瀉火，除煩止渴。用於外感熱病，高熱煩渴。肺熱喘咳，胃火亢盛，頭痛，牙痛','甘、辛，大寒','以色白，體重，質軟。縱斷面具絹絲樣光澤者為佳','本品為纖維狀的集合體，呈長塊狀、板塊狀或不規則塊狀。白色、灰白色或淡黃色，有的半透明。體重，質軟。縱斷面具絹絲樣光澤。氣微，味淡')");
     await db.execute(
