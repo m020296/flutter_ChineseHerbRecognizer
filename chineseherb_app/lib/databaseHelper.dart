@@ -443,7 +443,7 @@ class DatabaseHelper {
 
   Future<List<Map<String, dynamic>>> getHerbMapList() async {
     Database db = await this.database;
-    var result = await db.rawQuery('SELECT * FROM $herbTable');
+    var result = await db.rawQuery("SELECT * FROM $herbTable WHERE $colHaveIcon = '1'");
     return result;
   }
 
