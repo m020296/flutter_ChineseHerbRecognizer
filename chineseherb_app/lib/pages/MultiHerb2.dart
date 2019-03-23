@@ -21,12 +21,32 @@ class _MultiHerb2State extends State<MultiHerb2> {
   Widget build(BuildContext context) {
     if (finalImageBytes == null) {
       return new Scaffold(
-          backgroundColor: Colors.grey,
+          backgroundColor: Colors.grey[300],
           // appBar: new AppBar(
           //   title: new Text("多種中藥辨識"),
           //   backgroundColor: Colors.green[900],
           // ),
-          body: new Center(child: new Text("MultiHerb2")),
+          body:
+          //new Center(child: new Text("MultiHerb2")),
+          Container(
+            padding: const EdgeInsets.only(top: 10.0, left: 10.0, right: 10.0),
+            child: Card(
+              color: Colors.white,
+              elevation: 2.0,
+              child: ListTile(
+                title: Text(
+                  "\n提示",
+                  style: Theme.of(context).textTheme.subhead,
+                ),
+                subtitle: Text(
+                  "\n1. 請用把中藥放左純色 / 白色背景上"+
+                      "\n2. 請在光亮環境下拍攝"+
+                      //"\n3. 請嘗試不同的角度"+
+                      "\n",
+                ),
+              ),
+            ),
+          ),
           floatingActionButton: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisAlignment: MainAxisAlignment.end,
