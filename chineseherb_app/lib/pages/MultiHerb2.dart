@@ -186,7 +186,7 @@ class _MultiHerb2State extends State<MultiHerb2> {
 
   _selectImageAndDectect(BuildContext context, int src) async {
     Dio dio = new Dio();
-    dio.options.baseUrl = "http://gpu39.cse.cuhk.edu.hk:5000";
+    dio.options.baseUrl = "http://gpu38.cse.cuhk.edu.hk:5000";
 
     File image;
     if (src == 1) {
@@ -210,7 +210,7 @@ class _MultiHerb2State extends State<MultiHerb2> {
     //Send response and wait for return
     response = await dio.post(
       "/object_detection",
-      data: imageBytes,
+      data: base64.encode(imageBytes),
       options: new Options(
           contentType: ContentType.parse("application/x-www-form-urlencoded")),
     );
