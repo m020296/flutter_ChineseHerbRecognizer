@@ -6,6 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:dio/dio.dart';
 import 'package:photo_view/photo_view.dart';
 
+import 'package:modal_progress_hud/modal_progress_hud.dart';
 // import 'package:image_picker_saver/image_picker_saver.dart';
 
 class MultiHerb2 extends StatefulWidget {
@@ -17,6 +18,9 @@ class _MultiHerb2State extends State<MultiHerb2> {
   Uint8List finalImageBytes;
   var resultlist;
   int resultlistCount;
+
+  bool _saving = false;
+
   @override
   Widget build(BuildContext context) {
     if (finalImageBytes == null) {
@@ -26,7 +30,7 @@ class _MultiHerb2State extends State<MultiHerb2> {
           //   title: new Text("多種中藥辨識"),
           //   backgroundColor: Colors.green[900],
           // ),
-          body:
+          body: ModalProgressHUD(child:
           //new Center(child: new Text("MultiHerb2")),
           Container(
             padding: const EdgeInsets.only(top: 10.0, left: 10.0, right: 10.0),
@@ -46,7 +50,7 @@ class _MultiHerb2State extends State<MultiHerb2> {
                 ),
               ),
             ),
-          ),
+          ),inAsyncCall: _saving),
           floatingActionButton: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisAlignment: MainAxisAlignment.end,
@@ -85,7 +89,7 @@ class _MultiHerb2State extends State<MultiHerb2> {
         //   title: new Text("多種中藥辨識"),
         //   backgroundColor: Colors.green[900],
         // ),
-        body: Column(
+        body: ModalProgressHUD(child:  Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Expanded(
@@ -111,7 +115,7 @@ class _MultiHerb2State extends State<MultiHerb2> {
               child: resultToListView(),
             ),
           ],
-        ),
+        ),inAsyncCall: _saving),
         floatingActionButton: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           mainAxisAlignment: MainAxisAlignment.end,
@@ -197,6 +201,10 @@ class _MultiHerb2State extends State<MultiHerb2> {
 
     print("image: " + imageBytes.toString());
 
+    setState(() {
+      _saving = true;
+    });
+
     Response response;
 
     //Send response and wait for return
@@ -229,6 +237,7 @@ class _MultiHerb2State extends State<MultiHerb2> {
       finalImageBytes = _base64;
       resultlist = resJson['predictions'];
       resultlistCount = resJson['predictions'].length;
+      _saving = false;
       return finalImageBytes;
     });
   }

@@ -8,10 +8,11 @@ import 'package:image_picker/image_picker.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:tflite/tflite.dart';
-
+import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:chineseherb_app/pages/DetailPage.dart';
 
 class SingleHerb extends StatefulWidget {
+
   @override
   _SingleHerbState createState() => new _SingleHerbState();
 }
@@ -27,6 +28,9 @@ class _SingleHerbState extends State<SingleHerb> {
   double confidence;
   double threshold = 0.5;
   Herb targetHerb;
+
+  bool _saving = false;
+
   Widget build(BuildContext context) {
     if (finalImageBytes == null) {
       return new Scaffold(
@@ -35,7 +39,7 @@ class _SingleHerbState extends State<SingleHerb> {
           //   title: new Text("多種中藥辨識"),
           //   backgroundColor: Colors.green[900],
           // ),
-          body:
+          body :ModalProgressHUD(child:
           //new Center(child: new Text("Single Herb")),
           Container(
             padding: const EdgeInsets.only(top: 10.0, left: 10.0, right: 10.0),
@@ -55,6 +59,8 @@ class _SingleHerbState extends State<SingleHerb> {
                 ),
               ),
             ),
+          ),
+          inAsyncCall: _saving
           ),
           floatingActionButton: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
@@ -96,7 +102,7 @@ class _SingleHerbState extends State<SingleHerb> {
           //   title: new Text("多種中藥辨識"),
           //   backgroundColor: Colors.green[900],
           // ),
-          body: Container(
+          body: ModalProgressHUD(child:Container(
             padding: const EdgeInsets.only(top: 10.0, left: 10.0, right: 10.0),
             child: Card(
               color: Colors.white,
@@ -112,6 +118,7 @@ class _SingleHerbState extends State<SingleHerb> {
               ),
             ),
           ),
+              inAsyncCall: _saving),
           floatingActionButton: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisAlignment: MainAxisAlignment.end,
@@ -157,7 +164,7 @@ class _SingleHerbState extends State<SingleHerb> {
         //   title: new Text("多種中藥辨識"),
         //   backgroundColor: Colors.green[900],
         // ),
-        body: Column(
+        body: ModalProgressHUD(child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Expanded(
@@ -213,6 +220,7 @@ class _SingleHerbState extends State<SingleHerb> {
             )),
           ],
         ),
+            inAsyncCall: _saving),
         // body: PhotoView(
         //   imageProvider: MemoryImage(finalImageBytes),
         //   backgroundDecoration: BoxDecoration(color: Colors.white),
@@ -261,6 +269,10 @@ class _SingleHerbState extends State<SingleHerb> {
 
     List<int> imageBytes = image.readAsBytesSync();
 
+    setState(() {
+      _saving = true;
+    });
+
     String res = await Tflite.loadModel(
       model: "assets/output_graph.tflite",
       labels: "assets/output_labels.txt",
@@ -297,6 +309,7 @@ class _SingleHerbState extends State<SingleHerb> {
             finalImageBytes = imageBytes;
             targetHerb = this.herbList[0];
             currentHerb = this.herbList[0].chName;
+            _saving = false;
           });
         });
       });
@@ -304,6 +317,7 @@ class _SingleHerbState extends State<SingleHerb> {
       setState(() {
         confident = false;
         finalImageBytes = imageBytes;
+        _saving = false;
       });
     }
 
