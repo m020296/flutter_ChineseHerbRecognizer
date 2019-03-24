@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import './pages/HomePage.dart';
 
 import './pages/SingleHerb.dart';
@@ -9,6 +10,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    imageCache.clear();
+    print("imageCache.clear()");
     return MaterialApp(
       title: 'CHR',
       theme: ThemeData(

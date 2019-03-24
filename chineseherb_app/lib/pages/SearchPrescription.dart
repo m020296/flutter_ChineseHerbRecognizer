@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
 
 import 'package:chineseherb_app/databaseHelper.dart';
-import 'package:chineseherb_app/models/herb.dart';
-import 'package:chineseherb_app/pages/DetailPage.dart';
+import 'package:chineseherb_app/models/formula.dart';
+import 'package:chineseherb_app/pages/DetailPageFormula.dart';
 
 class SearchPrescription extends StatefulWidget {
   @override
@@ -15,22 +15,17 @@ class SearchPrescription extends StatefulWidget {
 class SearchListState extends State<SearchPrescription> {
   TextEditingController editingController = TextEditingController();
   DatabaseHelper databaseHelper = DatabaseHelper();
-  List<Herb> herbList;
+  List<Formula> formulaList;
   int count = 0;
 
   @override
   Widget build(BuildContext context) {
-    if (herbList == null) {
-      herbList = List<Herb>();
+    if (formulaList == null) {
+      formulaList = List<Formula>();
       updateListView();
     }
     TextEditingController editingController = TextEditingController();
     String currentInput = "";
-    // return new Scaffold(
-    // appBar: new AppBar(
-    //   title: new Text("中藥／藥方搜尋"),
-    //   backgroundColor: Colors.green[900],
-    // ),
     return Container(
         child: Column(children: <Widget>[
       Padding(
@@ -60,15 +55,6 @@ class SearchListState extends State<SearchPrescription> {
     ]));
   }
 
-  String idToFileName(int id){
-    String file_name = id.toString();
-    while(file_name.length < 4){
-      file_name = "0"+file_name;
-    }
-    return file_name;
-  }
-
-
   ListView getNoteListView() {
     TextStyle titleStyle = Theme.of(context).textTheme.subhead;
 
@@ -81,13 +67,12 @@ class SearchListState extends State<SearchPrescription> {
             elevation: 2.0,
             child: ListTile(
               leading: CircleAvatar(
-                  backgroundImage: AssetImage("assets/herbs_icon/" + idToFileName(this.herbList[position].herbID) + ".jpg"),
                   backgroundColor: Colors.blueGrey),
               title: Text(
-                this.herbList[position].chName,
+                this.formulaList[position].chinese_name,
                 style: titleStyle,
               ),
-              subtitle: Text(this.herbList[position].engName),
+              subtitle: Text(this.formulaList[position].english_name),
               trailing: Icon(Icons.keyboard_arrow_right,
                   color: Colors.grey, size: 30.0),
               onTap: () {
@@ -96,7 +81,7 @@ class SearchListState extends State<SearchPrescription> {
                   context,
                   MaterialPageRoute(
                     builder: (context) =>
-                        DetailPage(herb: this.herbList[position]),
+                        DetailPageFormula(formula: this.formulaList[position]),
                   ),
                 );
               },
@@ -104,49 +89,16 @@ class SearchListState extends State<SearchPrescription> {
           );
         },
       );
-//    }catch(e){
-//      return ListView.builder(
-//        itemCount: count,
-//        itemBuilder: (BuildContext context, int position) {
-//          return Card(
-//            color: Colors.white,
-//            elevation: 2.0,
-//            child: ListTile(
-//              leading: CircleAvatar(
-//                  backgroundColor: Colors.blueGrey),
-//              title: Text(
-//                this.herbList[position].chName,
-//                style: titleStyle,
-//              ),
-//              subtitle: Text(this.herbList[position].engName),
-//              trailing: Icon(Icons.keyboard_arrow_right,
-//                  color: Colors.grey, size: 30.0),
-//              onTap: () {
-//                debugPrint("ListTile Tapped");
-//                Navigator.push(
-//                  context,
-//                  MaterialPageRoute(
-//                    builder: (context) =>
-//                        DetailPage(herb: this.herbList[position]),
-//                  ),
-//                );
-//              },
-//            ),
-//          );
-//        },
-//      );
-//    }
-
   }
 
   void updateListView() {
-    final Future<Database> dbFuture = databaseHelper.initializeDatabase();
+    final Future<Database> dbFuture = databaseHelper.database;
     dbFuture.then((database) {
-      Future<List<Herb>> herbListFuture = databaseHelper.getHerbList();
-      herbListFuture.then((herbList) {
+      Future<List<Formula>> formulaListFuture = databaseHelper.getFormulaList();
+      formulaListFuture.then((formulaList) {
         setState(() {
-          this.herbList = herbList;
-          this.count = herbList.length;
+          this.formulaList = formulaList;
+          this.count = formulaList.length;
         });
       });
     });
@@ -156,12 +108,12 @@ class SearchListState extends State<SearchPrescription> {
     print(value);
     final Future<Database> dbFuture = databaseHelper.database;
     dbFuture.then((database) {
-      Future<List<Herb>> herbListFuture =
-          databaseHelper.getHerbListbyValue(value);
-      herbListFuture.then((herbList) {
+      Future<List<Formula>> formulaListFuture =
+          databaseHelper.getFormulaListbyValue(value);
+      formulaListFuture.then((formulabList) {
         setState(() {
-          this.herbList = herbList;
-          this.count = herbList.length;
+          this.formulaList = formulabList;
+          this.count = formulabList.length;
         });
       });
     });
