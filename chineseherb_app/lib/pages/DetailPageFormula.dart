@@ -156,7 +156,11 @@ class DetailPageFormulaState extends State<DetailPageFormula> {
 
   String idToFileName(int id){
     String file_name = id.toString();
-    while(file_name.length < 4){
+    if(file_name.length == 1){
+      file_name = "000"+file_name;
+    }else if(file_name.length == 2){
+      file_name = "00"+file_name;
+    }else if(file_name.length == 3){
       file_name = "0"+file_name;
     }
     return file_name;

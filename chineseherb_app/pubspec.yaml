@@ -49,6 +49,7 @@ flutter:
     - assets/output_graph.tflite
     - assets/output_labels.txt
     - assets/herbs_icon/
+    - assets/header.jpg
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see

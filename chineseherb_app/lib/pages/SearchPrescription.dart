@@ -67,7 +67,7 @@ class SearchListState extends State<SearchPrescription> {
             elevation: 2.0,
             child: ListTile(
               leading: CircleAvatar(
-                  backgroundColor: Colors.blueGrey),
+                  backgroundColor: Colors.brown[50]),
               title: Text(
                 this.formulaList[position].chinese_name,
                 style: titleStyle,

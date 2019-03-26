@@ -62,7 +62,11 @@ class SearchListState extends State<Search> {
 
   String idToFileName(int id){
     String file_name = id.toString();
-    while(file_name.length < 4){
+    if(file_name.length == 1){
+      file_name = "000"+file_name;
+    }else if(file_name.length == 2){
+      file_name = "00"+file_name;
+    }else if(file_name.length == 3){
       file_name = "0"+file_name;
     }
     return file_name;
@@ -82,7 +86,7 @@ class SearchListState extends State<Search> {
             child: ListTile(
               leading: CircleAvatar(
                   backgroundImage: AssetImage("assets/herbs_icon/" + idToFileName(this.herbList[position].herbID) + ".jpg"),
-                  backgroundColor: Colors.blueGrey),
+                  backgroundColor: Colors.brown[50]),
               title: Text(
                 this.herbList[position].chName,
                 style: titleStyle,

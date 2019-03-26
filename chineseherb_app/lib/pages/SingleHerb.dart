@@ -26,7 +26,7 @@ class _SingleHerbState extends State<SingleHerb> {
   String currentHerb = "Please take photo";
   bool confident = false;
   double confidence;
-  double threshold = 0.5;
+  double threshold = 0.2;
   Herb targetHerb;
 
   bool _saving = false;
@@ -155,9 +155,14 @@ class _SingleHerbState extends State<SingleHerb> {
     }
 
     String file_name = targetHerb.herbID.toString();
-    while(file_name.length < 4){
+    if(file_name.length == 1){
+      file_name = "000"+file_name;
+    }else if(file_name.length == 2){
+      file_name = "00"+file_name;
+    }else if(file_name.length == 3){
       file_name = "0"+file_name;
     }
+
     return new Scaffold(
         backgroundColor: Colors.grey[300],
         // appBar: new AppBar(
@@ -197,7 +202,7 @@ class _SingleHerbState extends State<SingleHerb> {
                   child: ListTile(
                     leading: CircleAvatar(
                         backgroundImage: AssetImage("assets/herbs_icon/" + file_name + ".jpg"),
-                        backgroundColor: Colors.blueGrey),
+                        backgroundColor: Colors.brown[50]),
                     title: Text(
                       targetHerb.chName,
                       style: Theme.of(context).textTheme.subhead,

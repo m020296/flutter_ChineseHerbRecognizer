@@ -106,6 +106,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+        key: _key,
         resizeToAvoidBottomPadding: false,
         appBar: new AppBar(
           leading: IconButton(
@@ -118,82 +119,82 @@ class _HomePageState extends State<HomePage> {
                 }
               }),
           title: _changeHeading(pageIndex),
-          backgroundColor: Colors.green[900],
+          backgroundColor: Colors.brown[300],
           automaticallyImplyLeading: false,
         ),
-        body: Scaffold(
-            key: _key,
-            drawer: SizedBox(
-              width: 250.0,
-              child: new Drawer(
-                child: new ListView(
-                  // padding: const EdgeInsets.symmetric(vertical: 70.0),
-                  children: <Widget>[
-//                    new Container(
-//                      height: 56.0,
-//                      color: Colors.lightGreen[50],
-//                      child: DrawerHeader(
-//                          child: InkWell(
-//                              child: Text("主頁",
-//                                  style: new TextStyle(
-//                                      fontSize: 30, color: Colors.black),
-//                                  textAlign: TextAlign.center),
-//                              onTap: () {
-//                                Navigator.of(context).pop();
-//                                setState(() => pageIndex = 0);
-//                              }),
-//                          margin: EdgeInsets.all(0.0),
-//                          padding: EdgeInsets.all(10.0)),
-//                    ),
-                    new ListTile(
-                        title: new Text("主頁"),
-                        leading: new Icon(Icons.home),
-                        onTap: () {
-                          // return new SingleHerb();
-                          Navigator.of(context).pop();
-                          // _testChange(1);
-                          setState(() => pageIndex = 0);
-                          // Navigator.of(context).push(new MaterialPageRoute(
-                          //     builder: (BuildContext context) => new SingleHerb()));
-                          // Navigator.pushReplacementNamed(context, "/singleherb");
-                        }),
-                    new ListTile(
-                        title: new Text("個別中藥材辨識"),
-                        leading: new Icon(Icons.all_out),
-                        onTap: () {
-                          // return new SingleHerb();
-                          Navigator.of(context).pop();
-                          // _testChange(1);
-                          setState(() => pageIndex = 1);
-                          // Navigator.of(context).push(new MaterialPageRoute(
-                          //     builder: (BuildContext context) => new SingleHerb()));
-                          // Navigator.pushReplacementNamed(context, "/singleherb");
-                        }),
-                    new ListTile(
-                        title: new Text("多種中藥材辨識"),
-                        leading: new Icon(Icons.category),
-                        onTap: () {
-                          Navigator.of(context).pop();
-                          setState(() => pageIndex = 2);
-                        }),
-                    new ListTile(
-                        title: new Text("中藥材搜尋"),
-                        leading: new Icon(Icons.search),
-                        onTap: () {
-                          Navigator.of(context).pop();
-                          setState(() => pageIndex = 3);
-                        }),
-                    new ListTile(
-                        title: new Text("中藥方劑搜尋"),
-                        leading: new Icon(Icons.search),
-                        onTap: () {
-                          Navigator.of(context).pop();
-                          setState(() => pageIndex = 4);
-                        }),
-                  ],
-                ),
-              ),
+        drawer: SizedBox(
+          width: 250.0,
+          child: new Drawer(
+            child: new ListView(
+              // padding: const EdgeInsets.symmetric(vertical: 70.0),
+              children: <Widget>[
+                    DrawerHeader(
+                      padding: EdgeInsets.zero,
+                      child: new Stack(children: <Widget>[
+                        new Image.asset(
+                        'assets/header.jpg', fit: BoxFit.fill, width: double.infinity,),
+                        new Align(
+                          alignment: FractionalOffset.bottomLeft,
+                          child: new Container(
+                            margin: EdgeInsets.all(15.0),
+                            child: new Text(
+                            "中藥材辨識",
+                              style: new TextStyle(color: Colors.brown[600],),
+                            ),
+                          ),
+                        ),
+                      ],),
+                    ),
+                new ListTile(
+                    title: new Text("主頁"),
+                    leading: new Icon(Icons.home),
+                    onTap: () {
+                      // return new SingleHerb();
+                      Navigator.of(context).pop();
+                      // _testChange(1);
+                      setState(() => pageIndex = 0);
+                      // Navigator.of(context).push(new MaterialPageRoute(
+                      //     builder: (BuildContext context) => new SingleHerb()));
+                      // Navigator.pushReplacementNamed(context, "/singleherb");
+                    }),
+                new ListTile(
+                    title: new Text("個別中藥材辨識"),
+                    leading: new Icon(Icons.all_out),
+                    onTap: () {
+                      // return new SingleHerb();
+                      Navigator.of(context).pop();
+                      // _testChange(1);
+                      setState(() => pageIndex = 1);
+                      // Navigator.of(context).push(new MaterialPageRoute(
+                      //     builder: (BuildContext context) => new SingleHerb()));
+                      // Navigator.pushReplacementNamed(context, "/singleherb");
+                    }),
+                new ListTile(
+                    title: new Text("多種中藥材辨識"),
+                    leading: new Icon(Icons.category),
+                    onTap: () {
+                      Navigator.of(context).pop();
+                      setState(() => pageIndex = 2);
+                    }),
+                new ListTile(
+                    title: new Text("中藥材搜尋"),
+                    leading: new Icon(Icons.search),
+                    onTap: () {
+                      Navigator.of(context).pop();
+                      setState(() => pageIndex = 3);
+                    }),
+                new ListTile(
+                    title: new Text("中藥方劑搜尋"),
+                    leading: new Icon(Icons.search),
+                    onTap: () {
+                      Navigator.of(context).pop();
+                      setState(() => pageIndex = 4);
+                    }),
+              ],
             ),
+          ),
+        ),
+        body: Scaffold(
             body: _changePage(pageIndex)));
   }
 }
