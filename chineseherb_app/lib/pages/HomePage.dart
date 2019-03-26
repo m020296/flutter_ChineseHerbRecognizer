@@ -139,7 +139,11 @@ class _HomePageState extends State<HomePage> {
                             margin: EdgeInsets.all(15.0),
                             child: new Text(
                             "中藥材辨識",
-                              style: new TextStyle(color: Colors.brown[600],),
+                              style: new TextStyle(
+                                  color: Colors.brown[600],
+                                  fontWeight: FontWeight.bold,
+//                                  fontSize: 25.0,
+                              ),
                             ),
                           ),
                         ),

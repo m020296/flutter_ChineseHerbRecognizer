@@ -48,12 +48,14 @@ class _SingleHerbState extends State<SingleHerb> {
               elevation: 2.0,
               child: ListTile(
                 title: Text(
-                  "\n提示",
+                  "\n請拍攝/上傳一張中藥材照片",
                   style: Theme.of(context).textTheme.subhead,
                 ),
                 subtitle: Text(
-                      "\n1. 請用把中藥放左純色 / 白色背景上"+
-                      "\n2. 請在光亮環境下拍攝"+
+                      "\n提示"+
+                      "\n1. 照片中只含有一種中藥材"+
+                      "\n2. 請用把中藥放左純色 / 白色背景上"+
+                      "\n3. 請在光亮環境下拍攝"+
                       // "\n3. 請嘗試不同的角度" +
                       "\n",
                 ),
