@@ -158,39 +158,62 @@ class _MultiHerb2State extends State<MultiHerb2> {
 
   ListView resultToListView() {
     TextStyle titleStyle = Theme.of(context).textTheme.subhead;
-    return ListView.builder(
-      itemCount: resultlistCount,
-      itemBuilder: (BuildContext context, int position) {
-        Color tempColor = HexColor(resultlist[position]['color']);
+    if(resultlistCount>0){
+      return ListView.builder(
+        itemCount: resultlistCount,
+        itemBuilder: (BuildContext context, int position) {
+          Color tempColor = HexColor(resultlist[position]['color']);
 //        var tempId = resultlist[position]['id'];
-        return Card(
-          color: Colors.white,
-          elevation: 2.0,
-          child: ListTile(
-            leading: CircleAvatar(backgroundColor: tempColor),
-            title: Text(
-              this.herbList[position].chName,
-              style: titleStyle,
-            ),
-            subtitle: Text(
+          return Card(
+            color: Colors.white,
+            elevation: 2.0,
+            child: ListTile(
+              leading: CircleAvatar(backgroundColor: tempColor),
+              title: Text(
+                this.herbList[position].chName,
+                style: titleStyle,
+              ),
+              subtitle: Text(
                 this.herbList[position].engName,
-            ),
-            trailing: Icon(Icons.keyboard_arrow_right,
-                color: Colors.grey, size: 30.0),
-            onTap: () {
+              ),
+              trailing: Icon(Icons.keyboard_arrow_right,
+                  color: Colors.grey, size: 30.0),
+              onTap: () {
 //              debugPrint("ListTile Tapped");
-               Navigator.push(
-                 context,
-                 MaterialPageRoute(
-                   builder: (context) =>
-                       DetailPage(herb: this.herbList[position]),
-                 ),
-               );
-            },
-          ),
-        );
-      },
-    );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        DetailPage(herb: this.herbList[position]),
+                  ),
+                );
+              },
+            ),
+          );
+        },
+      );
+    }
+    else{
+      return ListView.builder(
+        itemCount: 1,
+        itemBuilder: (BuildContext context, int position) {
+          return Card(
+            color: Colors.white,
+            elevation: 2.0,
+            child: ListTile(
+              title: Text(
+                "未能辨識",
+                style: titleStyle,
+              ),
+              subtitle: Text(
+                "\n請再嘗試!\n\n提示:\n 1. 請用把中藥放左純色背景上\n 2. 請在光亮環境下拍攝\n 3. 請嘗試不同的角度 \n ",
+              ),
+            ),
+          );
+        },
+      );
+    }
+
   }
 
   _selectImageAndDectect(BuildContext context, int src) async {

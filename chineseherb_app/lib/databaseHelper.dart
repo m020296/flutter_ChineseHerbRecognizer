@@ -2854,10 +2854,12 @@ class DatabaseHelper {
   Future<List<Map<String, dynamic>>> getHerbMapListbyMultiID(List<String> ids) async {
     Database db = await this.database;
     String input = "";
-    for (String id in ids){
-      input+="'$id',";
+    if(ids.length > 0){
+      for (String id in ids){
+        input+="'$id',";
+      }
+      input = input.substring(0,input.length-1);
     }
-    input = input.substring(0,input.length-1);
 //    print("SELECT * FROM $herbTable WHERE $colHerbID in ($input)");
     var result = await db
         .rawQuery("SELECT * FROM $herbTable WHERE $colHerbID in ($input)");
