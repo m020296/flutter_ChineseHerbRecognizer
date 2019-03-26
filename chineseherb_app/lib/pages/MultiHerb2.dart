@@ -5,8 +5,11 @@ import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:dio/dio.dart';
 import 'package:photo_view/photo_view.dart';
-
+import 'package:sqflite/sqflite.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:chineseherb_app/databaseHelper.dart';
+import 'package:chineseherb_app/models/herb.dart';
+import 'package:chineseherb_app/pages/DetailPage.dart';
 // import 'package:image_picker_saver/image_picker_saver.dart';
 
 class MultiHerb2 extends StatefulWidget {
@@ -15,10 +18,11 @@ class MultiHerb2 extends StatefulWidget {
 }
 
 class _MultiHerb2State extends State<MultiHerb2> {
+  DatabaseHelper databaseHelper = DatabaseHelper();
   Uint8List finalImageBytes;
   var resultlist;
   int resultlistCount;
-
+  List<Herb> herbList;
   bool _saving = false;
 
   @override
@@ -56,6 +60,7 @@ class _MultiHerb2State extends State<MultiHerb2> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
               FloatingActionButton(
+                heroTag: "btn1",
                 child: Icon(
                   Icons.camera_alt,
                   color: Colors.white,
@@ -67,6 +72,7 @@ class _MultiHerb2State extends State<MultiHerb2> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 5.0),
                 child: FloatingActionButton(
+                  heroTag: "btn2",
                   child: Icon(
                     Icons.folder_open,
                     color: Colors.white,
@@ -84,7 +90,7 @@ class _MultiHerb2State extends State<MultiHerb2> {
           ));
     }
     return new Scaffold(
-        backgroundColor: Colors.grey,
+        backgroundColor: Colors.grey[300],
         // appBar: new AppBar(
         //   title: new Text("多種中藥辨識"),
         //   backgroundColor: Colors.green[900],
@@ -121,6 +127,7 @@ class _MultiHerb2State extends State<MultiHerb2> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
             FloatingActionButton(
+              heroTag: "btn3",
               child: Icon(
                 Icons.camera_alt,
                 color: Colors.white,
@@ -132,6 +139,7 @@ class _MultiHerb2State extends State<MultiHerb2> {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 5.0),
               child: FloatingActionButton(
+                heroTag: "btn4",
                 child: Icon(
                   Icons.folder_open,
                   color: Colors.white,
@@ -154,29 +162,30 @@ class _MultiHerb2State extends State<MultiHerb2> {
       itemCount: resultlistCount,
       itemBuilder: (BuildContext context, int position) {
         Color tempColor = HexColor(resultlist[position]['color']);
-        var tempId = resultlist[position]['id'];
-
+//        var tempId = resultlist[position]['id'];
         return Card(
           color: Colors.white,
           elevation: 2.0,
           child: ListTile(
             leading: CircleAvatar(backgroundColor: tempColor),
             title: Text(
-              tempId,
+              this.herbList[position].chName,
               style: titleStyle,
             ),
-            subtitle: Text(tempId),
+            subtitle: Text(
+                this.herbList[position].engName,
+            ),
             trailing: Icon(Icons.keyboard_arrow_right,
                 color: Colors.grey, size: 30.0),
             onTap: () {
-              debugPrint("ListTile Tapped");
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) =>
-              //         DetailPage(herb: this.herbList[position]),
-              //   ),
-              // );
+//              debugPrint("ListTile Tapped");
+               Navigator.push(
+                 context,
+                 MaterialPageRoute(
+                   builder: (context) =>
+                       DetailPage(herb: this.herbList[position]),
+                 ),
+               );
             },
           ),
         );
@@ -186,7 +195,7 @@ class _MultiHerb2State extends State<MultiHerb2> {
 
   _selectImageAndDectect(BuildContext context, int src) async {
     Dio dio = new Dio();
-    dio.options.baseUrl = "http://gpu38.cse.cuhk.edu.hk:5000";
+    dio.options.baseUrl = "http://gpu39.cse.cuhk.edu.hk:5000";
 
     File image;
     if (src == 1) {
@@ -228,18 +237,38 @@ class _MultiHerb2State extends State<MultiHerb2> {
 
     print(resJson['predictions'].length);
 
+    List<String> ids = new List<String>();
     for (var pre in resJson['predictions']) {
       print(pre['id']);
+      String tmp = pre['id'];
       print(pre['color']);
+      ids.add(tmp);
+//      print(ids);
     }
-
-    setState(() {
-      finalImageBytes = _base64;
-      resultlist = resJson['predictions'];
-      resultlistCount = resJson['predictions'].length;
-      _saving = false;
-      return finalImageBytes;
+    final Future<Database> dbFuture = databaseHelper.database;
+    dbFuture.then((database) {
+      Future<List<Herb>> herbListFuture =
+      databaseHelper.getHerbListbyMultiID(ids);
+      herbListFuture.then((herbList) {
+        setState(() {
+          finalImageBytes = _base64;
+          this.herbList = herbList;
+          this.resultlist = resJson['predictions'];
+          this.resultlistCount = herbList.length;
+          _saving = false;
+          return finalImageBytes;
+        });
+      });
     });
+
+
+//    setState(() {
+//      finalImageBytes = _base64;
+//      resultlist = resJson['predictions'];
+//      resultlistCount = resJson['predictions'].length;
+//      _saving = false;
+//      return finalImageBytes;
+//    });
   }
 }
 

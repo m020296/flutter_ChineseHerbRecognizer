@@ -2851,6 +2851,18 @@ class DatabaseHelper {
         .rawQuery("SELECT * FROM $herbTable WHERE $colHerbID = '$input'");
     return result;
   }
+  Future<List<Map<String, dynamic>>> getHerbMapListbyMultiID(List<String> ids) async {
+    Database db = await this.database;
+    String input = "";
+    for (String id in ids){
+      input+="'$id',";
+    }
+    input = input.substring(0,input.length-1);
+//    print("SELECT * FROM $herbTable WHERE $colHerbID in ($input)");
+    var result = await db
+        .rawQuery("SELECT * FROM $herbTable WHERE $colHerbID in ($input)");
+    return result;
+  }
   Future<List<Herb>> getHerbList() async {
     var herbMapList = await getHerbMapList();
     int count = herbMapList.length;
@@ -2871,6 +2883,15 @@ class DatabaseHelper {
   }
   Future<List<Herb>> getHerbListbyID(String id) async {
     var herbMapList = await getHerbMapListbyID(id);
+    int count = herbMapList.length;
+    List<Herb> herbList = List<Herb>();
+    for (int i = 0; i < count; i++) {
+      herbList.add(Herb.fromMapObject((herbMapList[i])));
+    }
+    return herbList;
+  }
+  Future<List<Herb>> getHerbListbyMultiID(List<String> ids) async {
+    var herbMapList = await getHerbMapListbyMultiID(ids);
     int count = herbMapList.length;
     List<Herb> herbList = List<Herb>();
     for (int i = 0; i < count; i++) {
