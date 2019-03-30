@@ -12,7 +12,6 @@ import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:chineseherb_app/pages/DetailPage.dart';
 
 class SingleHerb extends StatefulWidget {
-
   @override
   _SingleHerbState createState() => new _SingleHerbState();
 }
@@ -26,7 +25,6 @@ class _SingleHerbState extends State<SingleHerb> {
   String currentHerb = "Please take photo";
   bool confident = false;
   double confidence;
-  double threshold = 0.2;
   double threshold = 0.5;
   Herb targetHerb;
 
@@ -40,31 +38,32 @@ class _SingleHerbState extends State<SingleHerb> {
           //   title: new Text("多種中藥辨識"),
           //   backgroundColor: Colors.green[900],
           // ),
-          body :ModalProgressHUD(child:
-          //new Center(child: new Text("Single Herb")),
-          Container(
-            padding: const EdgeInsets.only(top: 10.0, left: 10.0, right: 10.0),
-            child: Card(
-              color: Colors.white,
-              elevation: 2.0,
-              child: ListTile(
-                title: Text(
-                  "\n請拍攝/上傳一張中藥材照片",
-                  style: Theme.of(context).textTheme.subhead,
-                ),
-                subtitle: Text(
-                      "\n提示"+
-                      "\n1. 照片中只含有一種中藥材"+
-                      "\n2. 請用把中藥放左純色 / 白色背景上"+
-                      "\n3. 請在光亮環境下拍攝"+
-                      // "\n3. 請嘗試不同的角度" +
-                      "\n",
+          body: ModalProgressHUD(
+              child:
+                  //new Center(child: new Text("Single Herb")),
+                  Container(
+                padding:
+                    const EdgeInsets.only(top: 10.0, left: 10.0, right: 10.0),
+                child: Card(
+                  color: Colors.white,
+                  elevation: 2.0,
+                  child: ListTile(
+                    title: Text(
+                      "\n請拍攝/上傳一張中藥材照片",
+                      style: Theme.of(context).textTheme.subhead,
+                    ),
+                    subtitle: Text(
+                      "\n提示" +
+                          "\n1. 照片中只含有一種中藥材" +
+                          "\n2. 請用把中藥放左純色 / 白色背景上" +
+                          "\n3. 請在光亮環境下拍攝" +
+                          // "\n3. 請嘗試不同的角度" +
+                          "\n",
+                    ),
+                  ),
                 ),
               ),
-            ),
-          ),
-          inAsyncCall: _saving
-          ),
+              inAsyncCall: _saving),
           floatingActionButton: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisAlignment: MainAxisAlignment.end,
@@ -105,22 +104,24 @@ class _SingleHerbState extends State<SingleHerb> {
           //   title: new Text("多種中藥辨識"),
           //   backgroundColor: Colors.green[900],
           // ),
-          body: ModalProgressHUD(child:Container(
-            padding: const EdgeInsets.only(top: 10.0, left: 10.0, right: 10.0),
-            child: Card(
-              color: Colors.white,
-              elevation: 2.0,
-              child: ListTile(
-                title: Text(
-                  "未能辨識",
-                  style: Theme.of(context).textTheme.subhead,
-                ),
-                subtitle: Text(
-                  "\n請再嘗試!\n\n提示:\n 1. 請用把中藥放左純色背景上\n 2. 請在光亮環境下拍攝\n 3. 請嘗試不同的角度 \n ",
+          body: ModalProgressHUD(
+              child: Container(
+                padding:
+                    const EdgeInsets.only(top: 10.0, left: 10.0, right: 10.0),
+                child: Card(
+                  color: Colors.white,
+                  elevation: 2.0,
+                  child: ListTile(
+                    title: Text(
+                      "未能辨識",
+                      style: Theme.of(context).textTheme.subhead,
+                    ),
+                    subtitle: Text(
+                      "\n請再嘗試!\n\n提示:\n 1. 請用把中藥放左純色背景上\n 2. 請在光亮環境下拍攝\n 3. 請嘗試不同的角度 \n ",
+                    ),
+                  ),
                 ),
               ),
-            ),
-          ),
               inAsyncCall: _saving),
           floatingActionButton: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
@@ -129,7 +130,7 @@ class _SingleHerbState extends State<SingleHerb> {
               FloatingActionButton(
                 heroTag: "cam",
                 child: Icon(
-                  Icons.camera,
+                  Icons.camera_alt,
                   color: Colors.white,
                 ),
                 onPressed: () {
@@ -158,12 +159,12 @@ class _SingleHerbState extends State<SingleHerb> {
     }
 
     String file_name = targetHerb.herbID.toString();
-    if(file_name.length == 1){
-      file_name = "000"+file_name;
-    }else if(file_name.length == 2){
-      file_name = "00"+file_name;
-    }else if(file_name.length == 3){
-      file_name = "0"+file_name;
+    if (file_name.length == 1) {
+      file_name = "000" + file_name;
+    } else if (file_name.length == 2) {
+      file_name = "00" + file_name;
+    } else if (file_name.length == 3) {
+      file_name = "0" + file_name;
     }
 
     return new Scaffold(
@@ -172,62 +173,67 @@ class _SingleHerbState extends State<SingleHerb> {
         //   title: new Text("多種中藥辨識"),
         //   backgroundColor: Colors.green[900],
         // ),
-        body: ModalProgressHUD(child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Expanded(
-                child: ListView(
+        body: ModalProgressHUD(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                Container(
-                  color: Colors.white,
-                  margin: const EdgeInsets.symmetric(
-                      vertical: 20.0, horizontal: 20.0),
-                  height: 200.0,
-                  child: ClipRect(
-                    child: PhotoView(
-                      imageProvider: MemoryImage(finalImageBytes),
-                      maxScale: PhotoViewComputedScale.covered * 2.0,
-                      minScale: PhotoViewComputedScale.covered,
-                      initialScale: PhotoViewComputedScale.covered,
-                    ),
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.all(5),
-                  child: Text(
-                    "電腦分析上圖 " + (confidence * 100).toStringAsFixed(0) + "% 為",
-                    style: const TextStyle(fontSize: 18.0),
-                  ),
-                ),
-                Card(
-                  color: Colors.white,
-                  elevation: 2.0,
-                  child: ListTile(
-                    leading: CircleAvatar(
-                        backgroundImage: AssetImage("assets/herbs_icon/" + file_name + ".jpg"),
-                        backgroundColor: Colors.brown[50]),
-                    title: Text(
-                      targetHerb.chName,
-                      style: Theme.of(context).textTheme.subhead,
-                    ),
-                    subtitle: Text(targetHerb.engName),
-                    trailing: Icon(Icons.keyboard_arrow_right,
-                        color: Colors.grey, size: 30.0),
-                    onTap: () {
-                      debugPrint("card Tapped");
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => DetailPage(herb: targetHerb),
+                Expanded(
+                    child: ListView(
+                  children: <Widget>[
+                    Container(
+                      color: Colors.white,
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 20.0, horizontal: 20.0),
+                      height: 200.0,
+                      child: ClipRect(
+                        child: PhotoView(
+                          imageProvider: MemoryImage(finalImageBytes),
+                          maxScale: PhotoViewComputedScale.covered * 2.0,
+                          minScale: PhotoViewComputedScale.covered,
+                          initialScale: PhotoViewComputedScale.covered,
                         ),
-                      );
-                    },
-                  ),
-                ),
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(5),
+                      child: Text(
+                        "電腦分析上圖 " +
+                            (confidence * 100).toStringAsFixed(0) +
+                            "% 為",
+                        style: const TextStyle(fontSize: 18.0),
+                      ),
+                    ),
+                    Card(
+                      color: Colors.white,
+                      elevation: 2.0,
+                      child: ListTile(
+                        leading: CircleAvatar(
+                            backgroundImage: AssetImage(
+                                "assets/herbs_icon/" + file_name + ".jpg"),
+                            backgroundColor: Colors.brown[50]),
+                        title: Text(
+                          targetHerb.chName,
+                          style: Theme.of(context).textTheme.subhead,
+                        ),
+                        subtitle: Text(targetHerb.engName),
+                        trailing: Icon(Icons.keyboard_arrow_right,
+                            color: Colors.grey, size: 30.0),
+                        onTap: () {
+                          debugPrint("card Tapped");
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  DetailPage(herb: targetHerb),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                )),
               ],
-            )),
-          ],
-        ),
+            ),
             inAsyncCall: _saving),
         // body: PhotoView(
         //   imageProvider: MemoryImage(finalImageBytes),
@@ -240,7 +246,7 @@ class _SingleHerbState extends State<SingleHerb> {
             FloatingActionButton(
               heroTag: "cam",
               child: Icon(
-                Icons.camera,
+                Icons.camera_alt,
                 color: Colors.white,
               ),
               onPressed: () {
