@@ -27,6 +27,7 @@ class _SingleHerbState extends State<SingleHerb> {
   bool confident = false;
   double confidence;
   double threshold = 0.2;
+  double threshold = 0.5;
   Herb targetHerb;
 
   bool _saving = false;

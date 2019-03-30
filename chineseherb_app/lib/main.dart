@@ -13,7 +13,8 @@ class MyApp extends StatelessWidget {
     imageCache.clear();
     print("imageCache.clear()");
     return MaterialApp(
-      title: 'CHR',
+      title: '中藥材辨識',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.brown,
       ),
