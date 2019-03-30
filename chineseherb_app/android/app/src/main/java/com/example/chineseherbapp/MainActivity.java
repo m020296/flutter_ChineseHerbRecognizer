@@ -1,4 +1,4 @@
-package com.example.chineseherbapp;
+package com.mhw1804.chineseherbapp;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;
