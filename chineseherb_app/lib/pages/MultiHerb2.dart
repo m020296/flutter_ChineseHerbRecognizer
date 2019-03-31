@@ -24,7 +24,7 @@ class _MultiHerb2State extends State<MultiHerb2> {
   int resultlistCount;
   List<Herb> herbList;
   bool _saving = false;
-
+  String targetGPU = "";
   @override
   Widget build(BuildContext context) {
     if (finalImageBytes == null) {
@@ -38,24 +38,35 @@ class _MultiHerb2State extends State<MultiHerb2> {
           //new Center(child: new Text("MultiHerb2")),
           Container(
             padding: const EdgeInsets.only(top: 10.0, left: 10.0, right: 10.0),
-            child: Card(
-              color: Colors.white,
-              elevation: 2.0,
-              child: ListTile(
-                title: Text(
-                  "\n請拍攝/上傳一張中藥材照片",
-                  style: Theme.of(context).textTheme.subhead,
-                ),
-                subtitle: Text(
+            child: Column(
+              children: <Widget>[
+                Card(
+                  color: Colors.white,
+                  elevation: 2.0,
+                  child: ListTile(
+                    title: Text(
+                      "\n請拍攝/上傳一張中藥材照片",
+                      style: Theme.of(context).textTheme.subhead,
+                    ),
+                    subtitle: Text(
                       "\n提示"+
-                      "\n1. 照片中可含有多種中藥材"+
-                      "\n1. 請用把中藥放左純色 / 白色背景上"+
-                      "\n2. 請在光亮環境下拍攝"+
-                      //"\n3. 請嘗試不同的角度"+
-                      "\n",
+                          "\n1. 照片中可含有多種中藥材"+
+                          "\n1. 請用把中藥放左純色 / 白色背景上"+
+                          "\n2. 請在光亮環境下拍攝"+
+                          //"\n3. 請嘗試不同的角度"+
+                          "\n",
+                    ),
+                  ),
                 ),
-              ),
+                TextField(
+                  decoration: InputDecoration(
+                      hintText: 'Please enter gpu id'
+                  ),
+                  onChanged: assignGPU,
+                )
+              ],
             ),
+
           ),inAsyncCall: _saving),
           floatingActionButton: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
@@ -220,7 +231,7 @@ class _MultiHerb2State extends State<MultiHerb2> {
 
   _selectImageAndDectect(BuildContext context, int src) async {
     Dio dio = new Dio();
-    dio.options.baseUrl = "http://gpu39.cse.cuhk.edu.hk:5000";
+    dio.options.baseUrl = "http://gpu"+targetGPU+".cse.cuhk.edu.hk:5000";
 
     File image;
     if (src == 1) {
@@ -294,6 +305,12 @@ class _MultiHerb2State extends State<MultiHerb2> {
 //      _saving = false;
 //      return finalImageBytes;
 //    });
+  }
+
+  void assignGPU(String value) {
+    setState(() {
+      targetGPU = value;
+    });
   }
 }
 
