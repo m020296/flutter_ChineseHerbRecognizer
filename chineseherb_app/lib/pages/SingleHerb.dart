@@ -298,7 +298,7 @@ class _SingleHerbState extends State<SingleHerb> {
         numResults: 5, // defaults to 5
         threshold: 0.1 // defaults to 0.1
         );
-
+// test
     print(recognitions.toString());
     var first;
     for (var reg in recognitions) {
