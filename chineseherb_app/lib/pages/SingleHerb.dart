@@ -10,6 +10,7 @@ import 'package:sqflite/sqflite.dart';
 import 'package:tflite/tflite.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:chineseherb_app/pages/DetailPage.dart';
+import 'package:camera/camera.dart';
 
 class SingleHerb extends StatefulWidget {
   @override

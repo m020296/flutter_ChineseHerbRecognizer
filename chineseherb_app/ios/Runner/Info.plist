@@ -4,6 +4,18 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+
+	<key>NSCameraUsageDescription</key>
+	<string>Can I use the camera please?</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Can I use the mic please?</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Photo Library Usage Description</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Camera Usage Description</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string> Microphone Usage Description</string>
+
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
