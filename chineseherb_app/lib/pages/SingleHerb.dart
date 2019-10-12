@@ -341,5 +341,8 @@ class _SingleHerbState extends State<SingleHerb> {
     //   currentHerb = this.herbList[0].chName;
     //   return finalImageBytes;
     // });
+
+    await Tflite.close();
+
   }
 }
